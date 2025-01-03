@@ -1,21 +1,22 @@
 'use client';
 
 import React from 'react';
-import { ExternalLink, Clock } from 'lucide-react';
+import { Clock } from 'lucide-react';
+import CitationMarker from './CitationMarker';
+import SourceList from './SourceList';
 import type { Citation, Source } from '../../lib/types';
+
+interface Segment {
+    type: 'text' | 'citation';
+    content: string;
+    source?: Source;
+}
 
 interface AnswerDisplayProps {
     answer: string;
     citations: Citation[];
     sources: Source[];
     processingTime: number;
-}
-
-// Add this interface at the top of AnswerDisplay.tsx
-interface Segment {
-    type: 'text' | 'citation';
-    content: string;
-    source?: Source;  // Make source optional since text segments won't have it
 }
 
 export default function AnswerDisplay({ 
@@ -25,7 +26,7 @@ export default function AnswerDisplay({
     processingTime 
 }: AnswerDisplayProps) {
     // Create segments with citations
-    const segments: Segment[] = [];  
+    const segments: Segment[] = [];
     let lastIndex = 0;
 
     // Sort citations by position
@@ -40,11 +41,14 @@ export default function AnswerDisplay({
             });
         }
 
+        // Find corresponding source
+        const source = sources.find(s => s.title === citation.title);
+
         // Add citation
         segments.push({
             type: 'citation',
             content: citation.title,
-            source: sources.find(s => s.title === citation.title)
+            source
         });
 
         lastIndex = citation.end_idx;
@@ -58,6 +62,12 @@ export default function AnswerDisplay({
         });
     }
 
+    const scrollToSources = () => {
+        document.getElementById('sources')?.scrollIntoView({ 
+            behavior: 'smooth' 
+        });
+    };
+
     return (
         <div className="w-full max-w-3xl mx-auto">
             <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
@@ -68,21 +78,11 @@ export default function AnswerDisplay({
                             {segment.type === 'text' ? (
                                 <span>{segment.content}</span>
                             ) : (
-                                <button
-                                    onClick={() => {
-                                        document.getElementById('sources')?.scrollIntoView({ 
-                                            behavior: 'smooth' 
-                                        });
-                                    }}
-                                    className="inline-flex items-center px-2 py-0.5 mx-1 rounded 
-                                             bg-blue-50 text-blue-700 hover:bg-blue-100 
-                                             transition-colors"
-                                >
-                                    [{segment.content}]
-                                    {segment.source?.url && (
-                                        <ExternalLink size={12} className="ml-1" />
-                                    )}
-                                </button>
+                                <CitationMarker
+                                    title={segment.content}
+                                    source={segment.source}
+                                    onSourceClick={scrollToSources}
+                                />
                             )}
                         </React.Fragment>
                     ))}
@@ -98,52 +98,7 @@ export default function AnswerDisplay({
             </div>
 
             {/* Sources Section */}
-            <div id="sources" className="mt-8">
-                <h2 className="text-xl font-semibold mb-4">Sources</h2>
-                <div className="space-y-4">
-                    {sources.map((source, idx) => (
-                        <div 
-                            key={idx}
-                            className="border rounded-lg p-4 hover:shadow-md transition-shadow"
-                        >
-                            <div className="flex justify-between items-start mb-2">
-                                <h3 className="font-medium text-lg">{source.title}</h3>
-                                <span className="text-sm text-gray-500">
-                                    Relevance: {Math.round(source.relevance * 100)}%
-                                </span>
-                            </div>
-                            
-                            {source.highlights.length > 0 && (
-                                <div className="mb-2">
-                                    <p className="text-sm font-medium text-gray-700 mb-1">
-                                        Key Excerpts:
-                                    </p>
-                                    {source.highlights.map((highlight, hidx) => (
-                                        <p 
-                                            key={hidx} 
-                                            className="text-sm text-gray-600 mb-1"
-                                        >
-                                            • {highlight}
-                                        </p>
-                                    ))}
-                                </div>
-                            )}
-                            
-                            {source.url && (
-                                <a
-                                    href={source.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center text-sm text-blue-600 
-                                             hover:text-blue-800"
-                                >
-                                    View Source <ExternalLink size={14} className="ml-1" />
-                                </a>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
+            <SourceList sources={sources} />
         </div>
     );
 }
