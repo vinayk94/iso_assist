@@ -1,3 +1,4 @@
+from urllib.parse import quote
 from langchain_groq import ChatGroq
 import os
 from dotenv import load_dotenv
@@ -7,8 +8,10 @@ from typing import List, Dict, Optional, Tuple
 import time
 import re
 from datetime import datetime
+from src.utils.url_handler import URLHandler
 
 logging.basicConfig(level=logging.INFO)
+
 logger = logging.getLogger(__name__)
 
 def get_api_key():
@@ -78,6 +81,7 @@ class ERCOTRAGAssistant:
             temperature=0.3,
             max_tokens=1024
         )
+        self.url_handler = URLHandler()
 
     def get_document_metadata(self, doc_id: int) -> Dict:
         """Get detailed document metadata"""
@@ -93,6 +97,15 @@ class ERCOTRAGAssistant:
         """, (doc_id,))
         
         row = cur.fetchone()
+
+        if row:
+            url = self.url_handler.normalize_url(row[2], row[1])  # normalize the URL
+            return {
+                "document_type": row[0],
+                "last_updated": row[3].isoformat() if row[3] else None,
+                "url": url
+            }
+    
         if not row:
             return {}
             
@@ -103,6 +116,8 @@ class ERCOTRAGAssistant:
             "last_updated": created_at.isoformat() if created_at else None,
             "url": url or f"document://{file_name}" if file_name else None
         }
+    
+    
 
     def extract_highlights(self, content: str, query_terms: List[str]) -> List[str]:
         """Extract relevant highlights from content"""
@@ -123,191 +138,371 @@ class ERCOTRAGAssistant:
             highlights.append(sentences[0])
             
         return highlights[:3]  # Return top 3 highlights
+    
+    def clean_content(self, content: str) -> str:
+        """Clean content from NaN and formatting issues"""
+        if not content:
+            return ""
+            
+        # Remove NaN values
+        content = re.sub(r'\s*NaN\s*', ' ', content)
+        
+        # Remove multiple spaces
+        content = re.sub(r'\s+', ' ', content)
+        
+        # Remove empty lines
+        content = '\n'.join(line.strip() for line in content.split('\n') if line.strip())
+        
+        return content.strip()
 
-    async def vector_search(self, query: str, k: int = 5) -> Tuple[List[Dict], Dict]:
-        """Perform vector similarity search with enhanced metadata"""
-        query_embedding = self.embeddings.embed_query(query)
-        embedding_str = f"[{','.join(map(str, query_embedding))}]"
-        
-        cur = self.conn.cursor()
-        
-        # Get total sources first
-        cur.execute("SELECT COUNT(DISTINCT document_id) FROM chunks")
-        total_sources = cur.fetchone()[0]
-        
-        # Perform vector search
-        cur.execute("""
-            WITH chunk_data AS (
-                SELECT 
-                    c.id as chunk_id,
-                    c.content,
-                    c.document_id,
-                    d.title,
-                    d.content_type,
-                    d.file_name,
-                    d.url,
-                    e.embedding,
-                    (e.embedding <=> %s::vector) as distance
-                FROM chunks c
-                JOIN documents d ON c.document_id = d.id
-                JOIN embeddings e ON c.id = e.chunk_id
-                ORDER BY e.embedding <=> %s::vector
-                LIMIT %s
-            )
-            SELECT * FROM chunk_data
-        """, (embedding_str, embedding_str, k))
-        
-        chunks = []
-        seen_docs = set()
+
+
+    async def vector_search(self, query: str, k: int = 5) -> List[Dict]:
+        """Get relevant chunks with original URLs from database"""
+        try:
+            query_embedding = self.embeddings.embed_query(query)
+            embedding_str = f"[{','.join(map(str, query_embedding))}]"
+            
+            cur = self.conn.cursor()
+            
+            # Simple query that preserves original URLs
+            cur.execute("""
+                WITH ranked_chunks AS (
+                    SELECT 
+                        c.id as chunk_id,
+                        c.content,
+                        c.document_id,
+                        d.title,
+                        d.content_type,
+                        d.url,
+                        d.created_at,
+                        (e.embedding <=> %s::vector) as similarity_score
+                    FROM chunks c
+                    JOIN documents d ON c.document_id = d.id
+                    JOIN embeddings e ON c.id = e.chunk_id
+                    ORDER BY e.embedding <=> %s::vector
+                    LIMIT %s
+                )
+                SELECT * FROM ranked_chunks;
+            """, (embedding_str, embedding_str, k))
+            
+            chunks = []
+            seen_docs = set()
+            
+            for row in cur.fetchall():
+                chunk_id, content, doc_id, title, content_type, url, created_at, score = row
+                
+                if doc_id in seen_docs:
+                    continue
+                    
+                seen_docs.add(doc_id)
+                
+                chunks.append({
+                    'chunk_id': chunk_id,
+                    'content': self.clean_content(content),
+                    'metadata': {
+                        'document_id': doc_id,
+                        'title': title,
+                        'type': content_type,
+                        'url': url,  # Use URL exactly as stored
+                        'created_at': created_at.isoformat() if created_at else None
+                    },
+                    'highlights': self.extract_highlights(content, query),
+                    'relevance': 1 - score
+                })
+            
+            return chunks
+                
+        except Exception as e:
+            logging.error(f"Error in vector search: {e}")
+            raise
+
+
+    def extract_highlights(self, content: str, query: str) -> List[str]:
+        """Extract meaningful highlights from content"""
         query_terms = query.lower().split()
+        sentences = re.split(r'[.!?]+', content)
+        highlights = []
         
-        for row in cur.fetchall():
-            (chunk_id, content, doc_id, title, content_type, 
-             file_name, url, _, distance) = row
-             
-            # Get document metadata
-            metadata = self.get_document_metadata(doc_id)
+        for sentence in sentences:
+            sentence = sentence.strip()
+            if not sentence:
+                continue
             
-            # Generate preview and highlights
-            preview = content[:200] + "..." if len(content) > 200 else content
-            highlights = self.extract_highlights(content, query_terms)
+            # Score sentence based on query relevance
+            score = sum(term in sentence.lower() for term in query_terms)
             
-            chunks.append({
-                'chunk_id': chunk_id,
-                'content': content.strip(),
-                'metadata': {
-                    'document_id': doc_id,
-                    'title': title,
-                    'url': metadata['url'],
-                    'type': content_type,
-                    'document_type': metadata['document_type'],
-                    'last_updated': metadata['last_updated']
-                },
-                'preview': preview,
-                'highlights': highlights,
-                'distance': float(distance)
-            })
-            
-            seen_docs.add(doc_id)
-        
-        search_metadata = {
-            'total_sources': total_sources,
-            'sources_used': len(seen_docs)
-        }
-        
-        return chunks, search_metadata
+            # Additional scoring for meaningful content
+            if len(sentence.split()) >= 5:  # Minimum word requirement
+                score += 1
+            if any(term in sentence.lower() for term in ['must', 'should', 'required', 'important']):
+                score += 1
+                
+            if score > 0 and sentence not in highlights:
+                highlights.append(sentence)
+                
+        return highlights[:3]  # Return top 3 most relevant highlights
+    
 
-    def extract_citations(self, text: str) -> Tuple[str, List[Citation]]:
-        """Extract citations from generated text"""
-        citations = []
-        modified_text = text
-        
-        # Find citations in [Source] format
-        citation_pattern = r'\[(.*?)\]'
-        matches = re.finditer(citation_pattern, text)
-        
-        offset = 0
-        for match in matches:
-            start = match.start() - offset
-            end = match.end() - offset
-            source = match.group(1)
-            
-            citations.append(Citation(
-                title=source,
-                start_idx=start,
-                end_idx=end
-            ))
-            
-            # Remove citation from text
-            modified_text = modified_text[:start] + modified_text[end:]
-            offset += end - start
-        
-        return modified_text, citations
-
-    def create_prompt(self, query: str, chunks: List[Dict]) -> str:
-        """Create enhanced prompt with context"""
-        sources_text = []
-        
-        for chunk in chunks:
-            source = "[{title}]".format(
-                title=chunk['metadata']['title'].replace('_', ' ').title()
-            )
-            content = chunk['content']
-            sources_text.append(f"{source}: {content}")
-        
-        return f"""You are an expert assistant helping users understand ERCOT registration and qualification processes. 
-        Answer the following question using the provided sources: "{query}"
-
-        Guidelines:
-        1. Start with a direct answer to the question
-        2. Use clear structure with paragraphs and numbered lists for steps
-        3. Cite sources using [Document Title] format - ALWAYS include citations
-        4. Make citations frequency - aim for at least one citation per paragraph
-        5. Highlight key terms or requirements
-        6. If sources lack information, be explicit about it
-        7. Be concise but comprehensive
-
-        Sources:
-        {chr(10).join(sources_text)}
-
-        Answer the question with frequent citations:"""
-
-    async def process_query(self, query: str) -> Dict:
-        """Process query with enhanced response format"""
-        start_time = time.time()
-        
-        # Get relevant chunks with metadata
-        chunks, search_metadata = await self.vector_search(query)
-        
-        if not chunks:
-            return {
-                'answer': "I couldn't find relevant information in the ERCOT documentation.",
-                'citations': [],
-                'sources': [],
-                'processing_time': time.time() - start_time,
-                'metadata': search_metadata
-            }
-        
-        # Create prompt and get response
-        prompt = self.create_prompt(query, chunks)
-        response = await self.llm.ainvoke(prompt)
-        
-        # Extract citations
-        clean_answer, citations = self.extract_citations(response.content)
-        
-        # Process sources
-        sources = []
-        seen_docs = set()
+    def deduplicate_sources(self, chunks: List[Dict]) -> List[Dict]:
+        """Deduplicate sources while preserving best content"""
+        unique_sources = {}
         
         for chunk in chunks:
             doc_id = chunk['metadata']['document_id']
-            if doc_id not in seen_docs:
-                seen_docs.add(doc_id)
-                sources.append({
-                    'title': chunk['metadata']['title'],
-                    'url': chunk['metadata']['url'],
-                    'type': chunk['metadata']['type'],
-                    'content': chunk['content'],
-                    'metadata': {
-                        'document_type': chunk['metadata']['document_type'],
-                        'last_updated': chunk['metadata']['last_updated']
-                    },
-                    'preview': chunk['preview'],
-                    'highlights': chunk['highlights'],
-                    'relevance': 1 - chunk['distance']
-                })
+            
+            if doc_id not in unique_sources:
+                unique_sources[doc_id] = chunk
+            else:
+                # Keep source with higher relevance
+                if chunk['relevance'] > unique_sources[doc_id]['relevance']:
+                    unique_sources[doc_id] = chunk
+                
+                # Merge highlights if they're different
+                existing_highlights = set(unique_sources[doc_id]['highlights'])
+                for highlight in chunk['highlights']:
+                    if highlight not in existing_highlights:
+                        unique_sources[doc_id]['highlights'].append(highlight)
+                        if len(unique_sources[doc_id]['highlights']) > 3:
+                            break
         
-        # Add token count to metadata
-        search_metadata['token_count'] = len(clean_answer.split())
-        
-        return {
-            'answer': clean_answer,
-            'citations': [vars(c) for c in citations],
-            'sources': sources,
-            'processing_time': time.time() - start_time,
-            'metadata': search_metadata
-        }
+        return list(unique_sources.values())
+    
+    def verify_source_url(self, source_id: int) -> Dict:
+        """Verify and get source URL information"""
+        cur = self.conn.cursor()
+        try:
+            cur.execute("""
+                SELECT 
+                    url, 
+                    content_type,
+                    file_name,
+                    title
+                FROM documents 
+                WHERE id = %s
+            """, (source_id,))
+            
+            row = cur.fetchone()
+            if not row:
+                return None
+                
+            url, content_type, file_name, title = row
+            normalized_url = self.url_handler.normalize_url(url, file_name)
+            
+            return {
+                'url': normalized_url,
+                'type': content_type,
+                'title': title
+            }
+        finally:
+            cur.close()
 
+
+    def create_prompt(self, query: str, sources: List[Dict]) -> str:
+        source_text = []
+        
+        for source in sources:
+            metadata = source['metadata']
+            # Format source with title and source type
+            source_text.append(f"""
+    [{metadata['title']}] (ID: {metadata['document_id']}, Type: {metadata['type']}):
+    Content:
+    {source['content']}
+
+    Reference: {metadata['url']}
+            """.strip())
+        
+        return f"""You are an expert assistant for ERCOT documentation. Answer the following question using ONLY the provided sources.
+
+    Question: {query}
+
+    Guidelines:
+    1. Start with a clear, direct answer
+    2. Structure your response with proper HTML formatting:
+    - Use <h4> for section headings
+    - Use <ol> and <li> for numbered lists
+    - Use <ul> and <li> for bullet points
+    - Use <p> for paragraphs
+    - Use <strong> for emphasis
+    3. When citing sources, use this format: <cite data-source-id="[Document ID]">[Document Title]</cite>
+    4. Organize information logically with clear sections
+    5. Be concise but comprehensive
+    6. If steps are involved, use a numbered list
+    7. For important requirements, use bullet points
+    8. If you're unsure about something, say so explicitly
+
+    Sources:
+    {chr(10).join(source_text)}
+
+    Format your response with proper HTML and citations:"""
+    
+    def start_processing(self):
+        """Start timing the processing"""
+        self.start_time = time.time()
+
+    def get_processing_time(self) -> float:
+        """Get elapsed processing time in seconds"""
+        if self.start_time is None:
+            return 0.0
+        return time.time() - self.start_time
+    
+    def format_answer(self, answer: str) -> str:
+        """Format and clean the answer HTML"""
+        # Convert Markdown-style lists to HTML
+        answer = re.sub(r'^\d+\.\s+', r'<li>', answer, flags=re.MULTILINE)
+        answer = re.sub(r'^\*\s+', r'<li>', answer, flags=re.MULTILINE)
+        
+        # Clean up any raw HTML tags that might have come through
+        answer = re.sub(r'&lt;', '<', answer)
+        answer = re.sub(r'&gt;', '>', answer)
+        
+        # Ensure proper list nesting
+        answer = re.sub(r'(<li>.*?)(?=<li>|$)', r'\1</li>', answer)
+        answer = re.sub(r'((?:<li>.*?</li>)+)', r'<ol>\1</ol>', answer)
+        
+        # Add paragraphs
+        paragraphs = answer.split('\n\n')
+        formatted_paragraphs = []
+        for p in paragraphs:
+            if not p.strip():
+                continue
+            if not (p.startswith('<') and p.endswith('>')):
+                p = f'<p>{p}</p>'
+            formatted_paragraphs.append(p)
+        
+        return '\n'.join(formatted_paragraphs)
+    
+    def extract_citations(self, text: str) -> List[Dict]:
+        """Extract citations with source IDs"""
+        citations = []
+        citation_pattern = r'<cite data-source-id="(\d+)">\[(.*?)\]</cite>'
+        
+        for match in re.finditer(citation_pattern, text):
+            source_id = match.group(1)
+            title = match.group(2)
+            citations.append({
+                'title': title,
+                'source_id': int(source_id),
+                'start_idx': match.start(),
+                'end_idx': match.end()
+            })
+        
+        return citations
+    
+    def verify_and_fix_url(self, doc_id: int, url: str) -> str:
+        """Verify and fix document URL"""
+        cur = self.conn.cursor()
+        try:
+            # Get the complete document information - simplified query first
+            cur.execute("""
+                SELECT 
+                    d.url, 
+                    d.content_type,
+                    d.file_name,
+                    d.title
+                FROM documents d
+                WHERE d.id = %s
+            """, (doc_id,))
+            
+            row = cur.fetchone()
+            if not row:
+                return url
+                
+            current_url, content_type, file_name, title = row
+            
+            # If it's not a document type, return current URL
+            if content_type != 'document':
+                return current_url
+                
+            # For documents, check if we have a proper URL with extension
+            if file_name:
+                # Try to find the correct URL
+                cur.execute("""
+                    SELECT url 
+                    FROM documents 
+                    WHERE title = %s 
+                    AND url LIKE '%/files/docs/%'
+                    AND url SIMILAR TO '%\.(pdf|doc|docx|xls|xlsx)$'
+                    LIMIT 1
+                """, (title,))
+                
+                correct_url_row = cur.fetchone()
+                if correct_url_row:
+                    return correct_url_row[0]
+                    
+                # If no correct URL found but we have file_name
+                ext = os.path.splitext(file_name)[1]
+                if ext and not current_url.lower().endswith(tuple(['.pdf', '.doc', '.docx', '.xls', '.xlsx'])):
+                    # Remove any version suffixes and add extension
+                    base_url = re.sub(r'_v\d+$|_ver\d+$', '', current_url)
+                    return f"{base_url}{ext}"
+            
+            return current_url
+                
+        except Exception as e:
+            logging.error(f"Error verifying URL for doc_id {doc_id}: {e}")
+            return url  # Return original URL if any error occurs
+        finally:
+            cur.close()
+
+    async def process_query(self, query: str) -> Dict:
+        try:
+            self.start_processing()
+            
+            chunks = await self.vector_search(query)
+            if not chunks:
+                return {
+                    'answer': """<p>I couldn't find relevant information for your query in the ERCOT documentation. 
+                            Please try rephrasing your question or being more specific.</p>""",
+                    'citations': [],
+                    'sources': [],
+                    'metadata': {
+                        'total_chunks': 0,
+                        'unique_sources': 0,
+                        'processing_time': self.get_processing_time()
+                    }
+                }
+            
+            # Verify URLs before deduplication
+            for chunk in chunks:
+                chunk['metadata']['url'] = self.verify_and_fix_url(
+                    chunk['metadata']['document_id'],
+                    chunk['metadata']['url']
+                )
+            
+            unique_sources = self.deduplicate_sources(chunks)
+            context = self.create_prompt(query, unique_sources)
+            response = await self.llm.ainvoke(context)
+            answer = response.content if hasattr(response, 'content') else str(response)
+            formatted_answer = self.format_answer(answer)
+            citations = self.extract_citations(formatted_answer)
+            
+            return {
+                'answer': formatted_answer,
+                'citations': citations,
+                'sources': unique_sources,  # URLs already verified
+                'metadata': {
+                    'total_chunks': len(chunks),
+                    'unique_sources': len(unique_sources),
+                    'processing_time': self.get_processing_time()
+                }
+            }
+            
+        except Exception as e:
+            logging.error(f"Error processing query: {e}")
+            return {
+                'answer': f"""<p>I encountered an error while processing your query. 
+                            Please try again or rephrase your question.</p>""",
+                'error': str(e),
+                'citations': [],
+                'sources': [],
+                'metadata': {
+                    'total_chunks': 0,
+                    'unique_sources': 0,
+                    'processing_time': self.get_processing_time()
+                }
+            }
+        
     def __del__(self):
         try:
             if hasattr(self, 'conn'):

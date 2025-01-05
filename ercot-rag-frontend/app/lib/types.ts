@@ -6,32 +6,32 @@ export interface Citation {
     end_idx: number;
 }
 
-export interface DocumentMetadata {
-    document_type: string;
-    last_updated?: string;
+export interface SourceMetadata {
+    document_id: number;
+    title: string;
+    type: string;
+    url: string;
+    created_at: string;
 }
 
 export interface Source {
-    title: string;
-    url?: string;
-    type: string;
+    chunk_id: number;
     content: string;
-    metadata: DocumentMetadata;
-    preview: string;
+    metadata: SourceMetadata;
     highlights: string[];
     relevance: number;
 }
 
+export interface QueryMetadata {
+    total_chunks: number;
+    unique_sources: number;
+    processing_time: number;
+}
+
 export interface RAGResponse {
-    query: string; // Use the correct type here
     answer: string;
     citations: Citation[];
     sources: Source[];
-    processing_time: number;
-    metadata: {
-        total_sources: number;
-        sources_used: number;
-        token_count: number;
-    };
+    metadata: QueryMetadata;
+    error?: string;
 }
-

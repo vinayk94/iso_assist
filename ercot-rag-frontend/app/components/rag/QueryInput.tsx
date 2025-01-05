@@ -6,10 +6,12 @@ import { Search, Loader2 } from 'lucide-react';
 interface QueryInputProps {
     onSubmit: (query: string) => void;
     isLoading: boolean;
+    defaultValue?: string;  // Make it optional
 }
 
-export default function QueryInput({ onSubmit, isLoading }: QueryInputProps) {
-    const [query, setQuery] = useState('');
+export default function QueryInput({ onSubmit, isLoading, 
+    defaultValue = ''  }: QueryInputProps) {
+    const [query, setQuery] = useState(defaultValue);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();

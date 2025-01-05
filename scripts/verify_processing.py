@@ -1,5 +1,6 @@
 import os
 import logging
+import sys
 import psycopg2
 from dotenv import load_dotenv
 
@@ -61,10 +62,52 @@ def verify_processing(conn):
     finally:
         cur.close()
 
-if __name__ == "__main__":
-    load_dotenv()
-    conn = psycopg2.connect(os.getenv("POSTGRESQL_URI"))
+
+# Add project root to Python path
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(project_root)
+
+
+
+# test_search.py
+from src.assistant.rag_assistant import ERCOTRAGAssistant
+import asyncio
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+async def test_search():
+    assistant = ERCOTRAGAssistant()
     try:
-        verify_processing(conn)
+        # Test vector search
+        print("\nTesting vector search...")
+        chunks = await assistant.vector_search("How to register DER?")
+        print(f"\nFound {len(chunks)} chunks")
+        
+        for chunk in chunks:
+            print("\n---")
+            print(f"Title: {chunk['metadata']['title']}")
+            print(f"URL: {chunk['metadata']['url']}")
+            print(f"Content type: {chunk['metadata']['type']}")
+            print("First 100 chars:", chunk['content'][:100])
+        
+        # Test full query
+        print("\nTesting full query...")
+        result = await assistant.process_query("How to register DER?")
+        
+        print("\nAnswer:", result['answer'])
+        print("\nSources used:")
+        for source in result['sources']:
+            print(f"\n- {source['metadata']['title']}")
+            print(f"  URL: {source['metadata']['url']}")
+            
+    except Exception as e:
+        logging.error(f"Test error: {str(e)}", exc_info=True)
     finally:
-        conn.close()
+        if hasattr(assistant, 'conn'):
+            assistant.conn.close()
+
+if __name__ == "__main__":
+    asyncio.run(test_search())
+
+        

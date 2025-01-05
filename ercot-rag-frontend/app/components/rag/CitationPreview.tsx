@@ -14,7 +14,7 @@ export default function CitationPreview({ source }: CitationPreviewProps) {
             <div className="flex items-start justify-between mb-2">
                 <h4 className="font-medium text-sm flex items-center">
                     <BookOpen size={14} className="mr-2" />
-                    {source.title}
+                    {source.metadata.title}  {/* Use metadata.title */}
                 </h4>
                 <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
                     {Math.round(source.relevance * 100)}% match
@@ -29,10 +29,10 @@ export default function CitationPreview({ source }: CitationPreviewProps) {
                 </div>
             )}
 
-            {source.metadata.last_updated && (
+            {source.metadata.created_at && (  // Use created_at instead of last_updated
                 <div className="mt-2 flex items-center text-xs text-gray-500">
                     <Clock size={12} className="mr-1" />
-                    Updated: {new Date(source.metadata.last_updated).toLocaleDateString()}
+                    Updated: {new Date(source.metadata.created_at).toLocaleDateString()}
                 </div>
             )}
         </div>

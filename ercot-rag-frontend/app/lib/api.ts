@@ -17,8 +17,15 @@ export async function queryRAG(query: string): Promise<RAGResponse> {
     }
 
     const data = await response.json();
-    return {
-        query,  // Add the original query
-        ...data
-    };
+    return data;
+}
+
+export function formatSourceUrl(url: string): string {
+    // Handle both web and document URLs correctly
+    if (url.startsWith('http')) {
+        return url;
+    }
+    
+    // If it's a document URL, ensure it's properly formatted
+    return `${process.env.NEXT_PUBLIC_API_URL}${url}`;
 }

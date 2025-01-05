@@ -1,6 +1,4 @@
-# src/processor/processor.py
-# fixed processor for both web and document types
-
+# scripts/reprocess_chunks.py
 import os
 from typing import List, Dict, Optional, Tuple
 import psycopg2
@@ -21,14 +19,40 @@ from urllib.parse import urlparse, urljoin
 import requests
 from bs4 import BeautifulSoup
 
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("processor.log"),
-        logging.StreamHandler()
-    ]
-)
+
+# src/utils/url_handler.py
+
+from urllib.parse import urlparse, quote, urljoin
+from typing import Optional
+
+
+class DocLoader:
+    def __init__(self, file_path: str):
+        self.file_path = file_path
+
+    def load(self) -> List[Document]:
+        try:
+            pythoncom.CoInitialize()
+            word = win32com.client.Dispatch('Word.Application')
+            word.Visible = False
+            
+            temp_dir = tempfile.mkdtemp()
+            temp_docx = os.path.join(temp_dir, 'temp.docx')
+            
+            try:
+                doc = word.Documents.Open(self.file_path)
+                doc.SaveAs2(temp_docx, FileFormat=16)
+                doc.Close()
+                
+                loader = UnstructuredWordDocumentLoader(temp_docx)
+                return loader.load()
+            finally:
+                word.Quit()
+                shutil.rmtree(temp_dir)
+                pythoncom.CoUninitialize()
+        except Exception as e:
+            logging.error(f"Error loading .doc file {self.file_path}: {e}")
+            return []
 
 class URLHandler:
     """Handle URL management for ERCOT documents"""
@@ -40,10 +64,17 @@ class URLHandler:
     @classmethod
     def normalize_url(cls, url: str, file_name: Optional[str] = None) -> str:
         """Normalize URLs to standard ERCOT format"""
+        if not url:
+            return url
+            
+        # Remove version suffixes and clean spaces
+        url = url.split('_v')[0]  # Remove _v1, _v2 etc.
+        
         if url.startswith('file://'):
             # Convert file URL to ERCOT URL format
             if file_name:
-                return urljoin(cls.BASE_URL + cls.FILE_BASE, file_name)
+                # Look up the original URL from the documents table
+                return cls._get_original_url(file_name)
             return url
             
         if cls.BASE_URL in url:
@@ -51,42 +82,42 @@ class URLHandler:
             parsed = urlparse(url)
             path = parsed.path
             
-            # Check if it's a file URL
-            if cls.FILE_BASE in path:
-                return url  # Keep original file URLs as is
+            # Remove any query parameters or versioning
+            path = path.split('?')[0].split('_v')[0]
             
-            # For service URLs, ensure proper format
-            if cls.SERVICE_BASE in path:
-                # Remove version parameters
-                base_path = path.split('?')[0]
-                return cls.BASE_URL + base_path
+            # Check if it's a document URL
+            if path.endswith(('.pdf', '.doc', '.docx', '.xls', '.xlsx')):
+                # Ensure proper encoding of spaces and special characters
+                filename = path.split('/')[-1]
+                encoded_filename = quote(filename)
+                base_path = '/'.join(path.split('/')[:-1])
+                path = f"{base_path}/{encoded_filename}"
+                
+                # Ensure document URLs use /files/docs/
+                if cls.SERVICE_BASE in path:
+                    path = path.replace(cls.SERVICE_BASE, cls.FILE_BASE)
+                
+            return cls.BASE_URL + path
                 
         return url
 
     @classmethod
+    def _get_original_url(cls, file_name: str) -> str:
+        """Get original ERCOT URL from filename"""
+        # Look up the URL from your documents table
+        # For now, construct a probable URL
+        encoded_name = quote(file_name)
+        return f"{cls.BASE_URL}{cls.FILE_BASE}{encoded_name}"
+
+    @classmethod
     def get_document_url(cls, file_name: str, content_type: str) -> str:
         """Generate proper ERCOT URL for a document"""
+        encoded_name = quote(file_name)
         if content_type == 'web':
-            return urljoin(cls.BASE_URL + cls.SERVICE_BASE, file_name)
+            return urljoin(cls.BASE_URL + cls.SERVICE_BASE, encoded_name)
         else:
-            return urljoin(cls.BASE_URL + cls.FILE_BASE, file_name)
-
-class DocumentLoader:
-    """Base class for document loaders"""
-    @staticmethod
-    def get_loader(file_path: str):
-        ext = file_path.split('.')[-1].lower()
-        if ext == 'docx':
-            return UnstructuredWordDocumentLoader(file_path)
-        elif ext == 'doc':
-            return DocLoader(file_path)
-        elif ext == 'pdf':
-            return PyPDFLoader(file_path)
-        elif ext in ['xls', 'xlsx']:
-            return ExcelLoader(file_path)
-        else:
-            raise ValueError(f"Unsupported file type: {ext}")
-
+            return urljoin(cls.BASE_URL + cls.FILE_BASE, encoded_name)
+        
 class ExcelLoader:
     def __init__(self, file_path: str):
         self.file_path = file_path
@@ -117,33 +148,23 @@ class ExcelLoader:
             logging.error(f"Error loading Excel file {self.file_path}: {e}")
             return []
 
-class DocLoader:
-    def __init__(self, file_path: str):
-        self.file_path = file_path
+        
+class DocumentLoader:
+    """Base class for document loaders"""
+    @staticmethod
+    def get_loader(file_path: str):
+        ext = file_path.split('.')[-1].lower()
+        if ext == 'docx':
+            return UnstructuredWordDocumentLoader(file_path)
+        elif ext == 'doc':
+            return DocLoader(file_path)
+        elif ext == 'pdf':
+            return PyPDFLoader(file_path)
+        elif ext in ['xls', 'xlsx']:
+            return ExcelLoader(file_path)
+        else:
+            raise ValueError(f"Unsupported file type: {ext}")
 
-    def load(self) -> List[Document]:
-        try:
-            pythoncom.CoInitialize()
-            word = win32com.client.Dispatch('Word.Application')
-            word.Visible = False
-            
-            temp_dir = tempfile.mkdtemp()
-            temp_docx = os.path.join(temp_dir, 'temp.docx')
-            
-            try:
-                doc = word.Documents.Open(self.file_path)
-                doc.SaveAs2(temp_docx, FileFormat=16)
-                doc.Close()
-                
-                loader = UnstructuredWordDocumentLoader(temp_docx)
-                return loader.load()
-            finally:
-                word.Quit()
-                shutil.rmtree(temp_dir)
-                pythoncom.CoUninitialize()
-        except Exception as e:
-            logging.error(f"Error loading .doc file {self.file_path}: {e}")
-            return []
 
 class DocumentProcessor:
     def __init__(self):
@@ -233,13 +254,13 @@ class DocumentProcessor:
             chunk_data = [(
                 chunk['document_id'],
                 chunk['content'],
-                chunk['chunk_index'],
-                chunk['metadata']
+                chunk['chunk_index']
+                # Removed metadata as it's not in our schema
             ) for chunk in chunks]
             
             execute_batch(cur, """
-                INSERT INTO chunks (document_id, content, chunk_index, metadata)
-                VALUES (%s, %s, %s, %s)
+                INSERT INTO chunks (document_id, content, chunk_index)
+                VALUES (%s, %s, %s)
             """, chunk_data)
             
             stored = len(chunks)
@@ -252,7 +273,7 @@ class DocumentProcessor:
         finally:
             cur.close()
             
-        return stored, 0
+        return stored
 
     def process_web_content(self, url: str) -> Optional[str]:
         """Process web content"""
@@ -341,42 +362,69 @@ class DocumentProcessor:
         finally:
             self.conn.close()
 
-def cleanup_urls():
-    """Clean up URLs in the database"""
+logging.basicConfig(level=logging.INFO)
+
+def reprocess_chunks():
     load_dotenv()
     conn = psycopg2.connect(os.getenv("POSTGRESQL_URI"))
     cur = conn.cursor()
     
     try:
-        handler = URLHandler()
+        cur.execute("""
+            SELECT d.id, d.title, d.url 
+            FROM documents d
+            LEFT JOIN chunks c ON d.id = c.document_id
+            WHERE d.url LIKE '%/files/docs/%'
+            GROUP BY d.id, d.title, d.url
+            HAVING COUNT(c.id) = 0
+        """)
         
-        # Get all documents
-        cur.execute("SELECT id, url, file_name, content_type FROM documents")
-        updates = 0
+        docs = cur.fetchall()
+        print(f"\nFound {len(docs)} documents to process:")
         
-        for doc_id, url, file_name, content_type in cur.fetchall():
-            # Get proper URL
-            if content_type == 'document':
-                new_url = handler.get_document_url(file_name, content_type)
-            else:
-                new_url = handler.normalize_url(url, file_name)
+        processor = DocumentProcessor()
+        for doc_id, title, url in docs:
+            print(f"\nProcessing: {title}")
             
-            # Update if different
-            if new_url != url:
-                cur.execute("""
-                    UPDATE documents 
-                    SET url = %s 
-                    WHERE id = %s
-                """, (new_url, doc_id))
-                updates += 1
+            try:
+                # Get file extension from URL
+                file_ext = url.split('.')[-1].lower()
+                
+                # Download and process document
+                response = requests.get(url)
+                if response.status_code == 200:
+                    # Create temp file with correct extension
+                    with tempfile.NamedTemporaryFile(suffix=f'.{file_ext}', delete=False) as temp_file:
+                        temp_file.write(response.content)
+                        temp_path = temp_file.name
+                    
+                    try:
+                        # Process document
+                        content = processor.process_document(temp_path)
+                        if content:
+                            # Create chunks
+                            chunks = processor.create_chunks(content, doc_id)
+                            stored = processor.store_chunks(chunks)  # Changed here
+                            print(f"Created {stored} chunks")
+                        else:
+                            print(f"No content extracted from {title}")
+                    finally:
+                        # Clean up temp file
+                        os.unlink(temp_path)
+                else:
+                    print(f"Failed to download {title}: Status {response.status_code}")
+                    
+            except Exception as e:
+                print(f"Error processing {title}: {e}")
+                continue
         
         conn.commit()
-        logging.info(f"Updated {updates} URLs")
+        print("\nProcessing complete!")
         
     finally:
         cur.close()
         conn.close()
 
 if __name__ == "__main__":
-    processor = DocumentProcessor()
-    processor.process_all("data/documents")
+    reprocess_chunks()
+

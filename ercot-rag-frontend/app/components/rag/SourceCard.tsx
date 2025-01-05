@@ -1,6 +1,6 @@
 'use client';
 
-import { ExternalLink, Clock } from 'lucide-react';
+import { ExternalLink, Clock, FileText } from 'lucide-react';
 import type { Source } from '../../lib/types';
 
 interface SourceCardProps {
@@ -8,48 +8,69 @@ interface SourceCardProps {
 }
 
 export default function SourceCard({ source }: SourceCardProps) {
+    // Only show URL button if it's a valid web URL
+    const isValidUrl = source.metadata.url && (
+        source.metadata.url.startsWith('http://') || 
+        source.metadata.url.startsWith('https://')
+    );
+
     return (
         <div className="border rounded-lg p-4 hover:shadow-md transition-shadow">
             <div className="flex justify-between items-start mb-2">
-                <h3 className="font-medium text-lg">{source.title}</h3>
-                <span className="text-sm text-gray-500">
-                    Relevance: {Math.round(source.relevance * 100)}%
+                <div className="flex items-start gap-2">
+                    <FileText className="w-4 h-4 mt-1 text-gray-500" />
+                    <div>
+                        <h3 className="font-medium text-lg">
+                            {source.metadata.title}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                            {source.metadata.type === 'web' ? 'Web Page' : 'Document'}
+                        </p>
+                    </div>
+                </div>
+                <span className="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+                    {Math.round(source.relevance * 100)}% match
                 </span>
             </div>
             
-            {source.highlights.length > 0 && (
-                <div className="mb-2">
-                    <p className="text-sm font-medium text-gray-700 mb-1">
+            {source.highlights?.length > 0 && (
+                <div className="mt-4 space-y-2">
+                    <p className="text-sm font-medium text-gray-700">
                         Key Excerpts:
                     </p>
                     {source.highlights.map((highlight, idx) => (
-                        <p 
+                        <blockquote 
                             key={idx} 
-                            className="text-sm text-gray-600 mb-1 pl-4 border-l-2 border-gray-200"
+                            className="text-sm text-gray-600 pl-3 border-l-2 border-gray-200"
                         >
                             {highlight}
-                        </p>
+                        </blockquote>
                     ))}
                 </div>
             )}
             
-            <div className="flex justify-between items-center mt-2">
-                {source.url && (
+            <div className="flex justify-between items-center mt-4">
+                {isValidUrl ? (
                     <a
-                        href={source.url}
+                        href={source.metadata.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-blue-600 
-                                 hover:text-blue-800"
+                        className="inline-flex items-center gap-1 text-sm text-blue-600 
+                                 hover:text-blue-800 hover:underline"
                     >
-                        View Source <ExternalLink size={14} className="ml-1" />
+                        <ExternalLink size={14} />
+                        View Source
                     </a>
+                ) : (
+                    <span className="text-sm text-gray-500 italic">
+                        Source document
+                    </span>
                 )}
                 
-                {source.metadata.last_updated && (
-                    <span className="text-xs text-gray-500 flex items-center">
-                        <Clock size={12} className="mr-1" />
-                        Updated: {new Date(source.metadata.last_updated).toLocaleDateString()}
+                {source.metadata.created_at && (
+                    <span className="text-xs text-gray-500 flex items-center gap-1">
+                        <Clock size={12} />
+                        {new Date(source.metadata.created_at).toLocaleDateString()}
                     </span>
                 )}
             </div>
