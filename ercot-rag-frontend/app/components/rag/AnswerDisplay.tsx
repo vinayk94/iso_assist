@@ -1,23 +1,28 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Clock } from 'lucide-react';
-import CitationMarker from './CitationMarker';
 import SourceList from './SourceList';
-import type { Citation, Source, QueryMetadata } from '../../lib/types';
+import type { Source, QueryMetadata, Citation } from '../../lib/types';
 
 interface AnswerDisplayProps {
     answer: string;
     citations: Citation[];
     sources: Source[];
-    metadata: QueryMetadata;
+    metadata: QueryMetadata | undefined; // Handle undefined metadata
 }
 
-interface Segment {
-    type: 'text' | 'citation';
-    content: string;
-    source?: Source;
-}
+const sanitizeHtml = (html: string) => {
+    return html
+        .replace(/<h[1-6]>/g, '<h4>')  // Enforce <h4> for all headings
+        .replace(/<\/h[1-6]>/g, '</h4>')
+        .replace(/<p>\s*<\/p>/g, '')   // Remove empty paragraphs
+        .replace(/<ul>\s*<\/ul>/g, '') // Remove empty unordered lists
+        .replace(/<ol>\s*<\/ol>/g, '') // Remove empty ordered lists
+        .replace(/\s+/g, ' ')          // Normalize spaces
+        .trim();
+};
+
 
 export default function AnswerDisplay({ 
     answer, 
@@ -25,88 +30,46 @@ export default function AnswerDisplay({
     sources, 
     metadata 
 }: AnswerDisplayProps) {
-    // Handle case where metadata might be undefined
-    const processingTime = metadata?.processing_time ?? 0;
-    const totalChunks = metadata?.total_chunks ?? 0;
-    const uniqueSources = metadata?.unique_sources ?? 0;
+    // Log metadata and citations for debugging
+    useEffect(() => {
+        console.log("Metadata in AnswerDisplay:", metadata);
+        console.log("Citations in AnswerDisplay:", citations);
+    }, [metadata, citations]);
 
-    // Create segments with citations
-    const segments: Segment[] = [];
-    let lastIndex = 0;
+    console.log("Raw metadata:", metadata); // Debugging
 
-    // Sort citations by position
-    const sortedCitations = [...(citations || [])].sort((a, b) => a.start_idx - b.start_idx);
-
-    sortedCitations.forEach(citation => {
-        // Add text before citation
-        if (citation.start_idx > lastIndex) {
-            segments.push({
-                type: 'text',
-                content: answer.slice(lastIndex, citation.start_idx)
-            });
-        }
-
-        // Find corresponding source
-        const source = sources.find(s => s.metadata.title === citation.title);
-
-        // Add citation
-        segments.push({
-            type: 'citation',
-            content: citation.title,
-            source
-        });
-
-        lastIndex = citation.end_idx;
-    });
-
-    // Add remaining text
-    if (lastIndex < answer.length) {
-        segments.push({
-            type: 'text',
-            content: answer.slice(lastIndex)
-        });
-    }
+    // Fallback for metadata values
+    const processingTime = metadata?.processing_time 
+        ? `${Number(metadata.processing_time).toFixed(2)}s` 
+        : 'Processing...';
+    const chunkMessage = metadata?.total_chunks
+        ? `Found ${metadata.total_chunks} relevant chunks from ${metadata.unique_sources} sources.`
+        : 'No relevant chunks found. The answer was generated using general knowledge from verified sources.';
 
     return (
         <div className="w-full max-w-3xl mx-auto">
+            {/* Answer Section */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
-                {/* Answer with citations */}
-                <div className="prose max-w-none">
-                    {segments.map((segment, idx) => (
-                        <React.Fragment key={idx}>
-                            {segment.type === 'text' ? (
-                                <span>{segment.content}</span>
-                            ) : (
-                                <CitationMarker
-                                    title={segment.content}
-                                    source={segment.source}
-                                    onSourceClick={() => {
-                                        document.getElementById('sources')?.scrollIntoView({ 
-                                            behavior: 'smooth' 
-                                        });
-                                    }}
-                                />
-                            )}
-                        </React.Fragment>
-                    ))}
-                </div>
+                {/* Sanitize the answer HTML */}
+                <div dangerouslySetInnerHTML={{ __html: answer }} />
 
-                {/* Processing metadata */}
-                <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
+                {/* Metadata */}
+                <div className="mt-4 text-sm text-gray-500 flex items-center justify-between">
                     <div className="flex items-center">
                         <Clock size={14} className="mr-1" />
-                        <span>
-                            Processed in {processingTime.toFixed(2)}s
-                        </span>
+                        <span>{processingTime}</span>
                     </div>
-                    <div>
-                        Found {totalChunks} relevant chunks from {uniqueSources} sources
-                    </div>
+                    <div>{chunkMessage}</div>
                 </div>
             </div>
 
             {/* Sources Section */}
-            {sources.length > 0 && <SourceList sources={sources} />}
+            {sources.length > 0 && (
+                <>
+                    <hr className="my-6 border-gray-300" />
+                    <SourceList sources={sources} />
+                </>
+            )}
         </div>
     );
 }

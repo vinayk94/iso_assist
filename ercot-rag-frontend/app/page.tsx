@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -12,11 +11,12 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [response, setResponse] = useState<RAGResponse | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [currentQuery, setCurrentQuery] = useState<string>('');  // Track current query
 
     const handleQuery = async (query: string) => {
         setIsLoading(true);
         setError(null);
-        setResponse(null);
+        setCurrentQuery(query);  // Save current query for retry
         
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/query`, {
@@ -32,7 +32,13 @@ export default function Home() {
             }
             
             const data: RAGResponse = await res.json();
+            
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
             setResponse(data);
+            
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Something went wrong');
         } finally {
@@ -41,8 +47,8 @@ export default function Home() {
     };
 
     const retry = () => {
-        if (response) {
-            handleQuery(response.query);
+        if (currentQuery) {
+            handleQuery(currentQuery);
         }
     };
 
@@ -55,14 +61,15 @@ export default function Home() {
 
                 <QueryInput 
                     onSubmit={handleQuery} 
-                    isLoading={isLoading} 
+                    isLoading={isLoading}
+                    defaultValue={currentQuery}  // Optional: preserve query
                 />
 
                 {error && (
                     <div className="mt-6">
                         <ErrorMessage 
                             message={error} 
-                            retry={response ? retry : undefined} 
+                            retry={currentQuery ? retry : undefined} 
                         />
                     </div>
                 )}
@@ -77,9 +84,9 @@ export default function Home() {
                     <div className="mt-8">
                         <AnswerDisplay 
                             answer={response.answer}
-                            citations={response.citations}
+                            citations={response.citations} // Pass citations here
                             sources={response.sources}
-                            processingTime={response.processing_time}
+                            metadata={response.metadata}
                         />
                     </div>
                 )}

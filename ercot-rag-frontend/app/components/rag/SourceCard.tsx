@@ -7,7 +7,20 @@ interface SourceCardProps {
     source: Source;
 }
 
+function cleanExcerpt(excerpt: string): string {
+    // Remove repetitive text
+    const cleaned = excerpt.replace(/(?:ERCOT\s*)+/g, 'ERCOT');
+    // Ensure reasonable length
+    return cleaned.length > 150 ? cleaned.slice(0, 150) + '...' : cleaned;
+}
+
+
 export default function SourceCard({ source }: SourceCardProps) {
+
+    const excerpt = source.highlights?.[0] 
+    ? cleanExcerpt(source.highlights[0])
+    : null;
+
     // Only show URL button if it's a valid web URL
     const isValidUrl = source.metadata.url && (
         source.metadata.url.startsWith('http://') || 
@@ -15,65 +28,36 @@ export default function SourceCard({ source }: SourceCardProps) {
     );
 
     return (
-        <div className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-            <div className="flex justify-between items-start mb-2">
-                <div className="flex items-start gap-2">
-                    <FileText className="w-4 h-4 mt-1 text-gray-500" />
-                    <div>
-                        <h3 className="font-medium text-lg">
-                            {source.metadata.title}
-                        </h3>
-                        <p className="text-sm text-gray-500">
-                            {source.metadata.type === 'web' ? 'Web Page' : 'Document'}
-                        </p>
-                    </div>
-                </div>
-                <span className="text-sm bg-blue-50 text-blue-700 px-2 py-1 rounded-full">
+        <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
+            <div className="flex justify-between items-start">
+                <h3 className="text-sm font-medium text-gray-900">
+                    {source.metadata.title}
+                </h3>
+                <span className="text-xs text-gray-500">
+                        {source.metadata.type} {/* Add back the type label */}
+                    </span>
+                <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
                     {Math.round(source.relevance * 100)}% match
                 </span>
             </div>
             
-            {source.highlights?.length > 0 && (
-                <div className="mt-4 space-y-2">
-                    <p className="text-sm font-medium text-gray-700">
-                        Key Excerpts:
-                    </p>
-                    {source.highlights.map((highlight, idx) => (
-                        <blockquote 
-                            key={idx} 
-                            className="text-sm text-gray-600 pl-3 border-l-2 border-gray-200"
-                        >
-                            {highlight}
-                        </blockquote>
-                    ))}
-                </div>
+            {excerpt && (
+                <p className="mt-2 text-sm text-gray-600">
+                    {excerpt}
+                </p>
             )}
             
-            <div className="flex justify-between items-center mt-4">
-                {isValidUrl ? (
-                    <a
-                        href={source.metadata.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm text-blue-600 
-                                 hover:text-blue-800 hover:underline"
-                    >
-                        <ExternalLink size={14} />
-                        View Source
-                    </a>
-                ) : (
-                    <span className="text-sm text-gray-500 italic">
-                        Source document
-                    </span>
-                )}
-                
-                {source.metadata.created_at && (
-                    <span className="text-xs text-gray-500 flex items-center gap-1">
-                        <Clock size={12} />
-                        {new Date(source.metadata.created_at).toLocaleDateString()}
-                    </span>
-                )}
-            </div>
+            {source.metadata.url && (
+                <a 
+                    href={source.metadata.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center text-xs text-blue-600 hover:text-blue-800"
+                >
+                    View Source
+                    <ExternalLink size={12} className="ml-1" />
+                </a>
+            )}
         </div>
     );
 }

@@ -9,6 +9,7 @@ import time
 import re
 from datetime import datetime
 from src.utils.url_handler import URLHandler
+import re
 
 logging.basicConfig(level=logging.INFO)
 
@@ -82,6 +83,7 @@ class ERCOTRAGAssistant:
             max_tokens=1024
         )
         self.url_handler = URLHandler()
+        self.start_time = None
 
     def get_document_metadata(self, doc_id: int) -> Dict:
         """Get detailed document metadata"""
@@ -120,24 +122,24 @@ class ERCOTRAGAssistant:
     
 
     def extract_highlights(self, content: str, query_terms: List[str]) -> List[str]:
-        """Extract relevant highlights from content"""
+        """Extract meaningful highlights from content"""
         highlights = []
-        sentences = re.split('[.!?]+', content)
-        
+        sentences = re.split(r'[.!?]+', content)
+
         for sentence in sentences:
             sentence = sentence.strip()
             if not sentence:
                 continue
-                
-            # Check if sentence contains query terms
+
+            # Remove repetitive words
+            sentence = re.sub(r'\b(\w+)\s+\1+\b', r'\1', sentence)
+
+            # Add to highlights if query terms match
             if any(term.lower() in sentence.lower() for term in query_terms):
                 highlights.append(sentence)
-                
-        # If no highlights found, use first sentence
-        if not highlights and sentences:
-            highlights.append(sentences[0])
-            
+
         return highlights[:3]  # Return top 3 highlights
+
     
     def clean_content(self, content: str) -> str:
         """Clean content from NaN and formatting issues"""
@@ -197,17 +199,18 @@ class ERCOTRAGAssistant:
                     
                 seen_docs.add(doc_id)
                 
+                cleaned_content = self.clean_content(content)
                 chunks.append({
                     'chunk_id': chunk_id,
-                    'content': self.clean_content(content),
+                    'content': cleaned_content,
                     'metadata': {
                         'document_id': doc_id,
                         'title': title,
                         'type': content_type,
-                        'url': url,  # Use URL exactly as stored
+                        'url': url,
                         'created_at': created_at.isoformat() if created_at else None
                     },
-                    'highlights': self.extract_highlights(content, query),
+                    'highlights': self.extract_highlights(cleaned_content, query),  # Use cleaned content
                     'relevance': 1 - score
                 })
             
@@ -300,66 +303,73 @@ class ERCOTRAGAssistant:
 
     def create_prompt(self, query: str, sources: List[Dict]) -> str:
         source_text = []
-        
+
         for source in sources:
             metadata = source['metadata']
-            # Format source with title and source type
             source_text.append(f"""
-    [{metadata['title']}] (ID: {metadata['document_id']}, Type: {metadata['type']}):
-    Content:
-    {source['content']}
-
-    Reference: {metadata['url']}
+            [{metadata['title']}] (ID: {metadata['document_id']}, Type: {metadata['type']}):
+            Content:
+            {source['content']}
+            Reference: {metadata['url']}
             """.strip())
-        
+
         return f"""You are an expert assistant for ERCOT documentation. Answer the following question using ONLY the provided sources.
 
-    Question: {query}
+        Question: {query}
 
-    Guidelines:
-    1. Start with a clear, direct answer
-    2. Structure your response with proper HTML formatting:
-    - Use <h4> for section headings
-    - Use <ol> and <li> for numbered lists
-    - Use <ul> and <li> for bullet points
-    - Use <p> for paragraphs
-    - Use <strong> for emphasis
-    3. When citing sources, use this format: <cite data-source-id="[Document ID]">[Document Title]</cite>
-    4. Organize information logically with clear sections
-    5. Be concise but comprehensive
-    6. If steps are involved, use a numbered list
-    7. For important requirements, use bullet points
-    8. If you're unsure about something, say so explicitly
+        Guidelines:
+        1. Include citations inline where they are relevant.
+        2. Use the format <cite data-source-id="[Document ID]">[Document Title]</cite> to refer to sources.
+        3. Write in a clear, professional tone.
+        4. Organize your response with headings (`<h3>`, `<h4>`), paragraphs (`<p>`), and lists (`<ol>`, `<ul>`) as needed.
+        5. Avoid repeating information unnecessarily.
+        6. Keep the response concise and actionable.
+        7. Use HTML formatting for clarity and structure.
 
-    Sources:
-    {chr(10).join(source_text)}
+        Example:
+        <h3>Registering a DER in ERCOT</h3>
+        <p>Registering a Distributed Energy Resource (DER) in ERCOT involves completing the registration form and obtaining an ESR Dispatch Asset Code.</p>
 
-    Format your response with proper HTML and citations:"""
+        <h4>Step 1: Completing the Registration Form</h4>
+        <p>To register a DER, download the appropriate form from the ERCOT website. You can use the <cite data-source-id="123">NOIE Identification and Meter Point Registration Form</cite> for non-scheduled entities, or the <cite data-source-id="124">ELSE Identification and Meter Point Registration Form</cite> for generators with a capacity of 1 MW or greater.</p>
+
+        <h4>Step 2: Obtaining an ESR Dispatch Asset Code</h4>
+        <p>After completing the registration form, download the <cite data-source-id="125">RIOO Export Spreadsheet</cite> to assign an ESR Dispatch Asset Code. Submit the completed spreadsheet to ERCOT.</p>
+
+        Sources:
+        {chr(10).join(source_text)}
+
+        The response must be structured with embedded citations and valid HTML."""
+
+
+
+
+
+
+
+
     
     def start_processing(self):
         """Start timing the processing"""
-        self.start_time = time.time()
+        self.start_time = time.perf_counter()
 
     def get_processing_time(self) -> float:
         """Get elapsed processing time in seconds"""
         if self.start_time is None:
             return 0.0
-        return time.time() - self.start_time
+        return  round(time.perf_counter() - self.start_time, 2)
+    
     
     def format_answer(self, answer: str) -> str:
         """Format and clean the answer HTML"""
-        # Convert Markdown-style lists to HTML
+        # Remove Markdown-style lists to avoid conflicts
         answer = re.sub(r'^\d+\.\s+', r'<li>', answer, flags=re.MULTILINE)
         answer = re.sub(r'^\*\s+', r'<li>', answer, flags=re.MULTILINE)
-        
-        # Clean up any raw HTML tags that might have come through
-        answer = re.sub(r'&lt;', '<', answer)
-        answer = re.sub(r'&gt;', '>', answer)
-        
+
         # Ensure proper list nesting
         answer = re.sub(r'(<li>.*?)(?=<li>|$)', r'\1</li>', answer)
         answer = re.sub(r'((?:<li>.*?</li>)+)', r'<ol>\1</ol>', answer)
-        
+
         # Add paragraphs
         paragraphs = answer.split('\n\n')
         formatted_paragraphs = []
@@ -369,8 +379,9 @@ class ERCOTRAGAssistant:
             if not (p.startswith('<') and p.endswith('>')):
                 p = f'<p>{p}</p>'
             formatted_paragraphs.append(p)
-        
+
         return '\n'.join(formatted_paragraphs)
+
     
     def extract_citations(self, text: str) -> List[Dict]:
         """Extract citations with source IDs"""
@@ -445,6 +456,76 @@ class ERCOTRAGAssistant:
         finally:
             cur.close()
 
+    def clean_llm_response(self, response: str) -> str:
+        """Clean up LLM response to ensure single, clean HTML content"""
+        # Remove markdown-style formatting if present
+        response = re.sub(r'\*\*([^*]+)\*\*', r'\1', response)
+        
+        # Extract HTML content if mixed formats exist
+        html_match = re.search(r'<[ph][^>]*>.*</[ph]>', response, re.DOTALL)
+        if html_match:
+            return html_match.group(0)
+            
+        # If no HTML found, convert plain text to HTML
+        if not response.strip().startswith('<'):
+            lines = response.split('\n')
+            formatted = []
+            in_list = False
+            
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                    
+                if line.startswith(('1.', '2.', '3.')):
+                    if not in_list:
+                        formatted.append('<ol>')
+                        in_list = True
+                    formatted.append(f'<li>{line[2:].strip()}</li>')
+                else:
+                    if in_list:
+                        formatted.append('</ol>')
+                        in_list = False
+                    formatted.append(f'<p>{line}</p>')
+            
+            if in_list:
+                formatted.append('</ol>')
+                
+            return '\n'.join(formatted)
+            
+        return response
+    
+    
+    
+
+
+    def enforce_consistent_html(self,html: str) -> str:
+        # Normalize headings (allow <h3>, <h4>, etc.)
+        html = re.sub(r'<h[1-6]>', '<h3>', html)
+        html = re.sub(r'</h[1-6]>', '</h3>', html)
+
+        # Remove redundant or empty tags
+        html = re.sub(r'<h3>\s*</h3>', '', html)  # Remove empty headings
+
+        # Fix nested lists
+        html = re.sub(r'<ol>\s*<ol>', '<ol>', html)  # Remove nested <ol>
+        html = re.sub(r'</ol>\s*</ol>', '</ol>', html)  # Close properly
+        html = re.sub(r'<ul>\s*<ul>', '<ul>', html)  # Remove nested <ul>
+        html = re.sub(r'</ul>\s*</ul>', '</ul>', html)  # Close properly
+
+        # Fix list items
+        html = re.sub(r'<li>\s*<li>', '<li>', html)  # Merge nested <li>
+        html = re.sub(r'</li>\s*</li>', '</li>', html)  # Close duplicate <li>
+
+        # Remove extra spaces between tags
+        html = re.sub(r'>\s+<', '><', html).strip()
+
+        return html
+
+
+
+
+
     async def process_query(self, query: str) -> Dict:
         try:
             self.start_processing()
@@ -452,7 +533,7 @@ class ERCOTRAGAssistant:
             chunks = await self.vector_search(query)
             if not chunks:
                 return {
-                    'answer': """<p>I couldn't find relevant information for your query in the ERCOT documentation. 
+                    'answer': """<p>I couldn't find relevant information for your query. 
                             Please try rephrasing your question or being more specific.</p>""",
                     'citations': [],
                     'sources': [],
@@ -475,10 +556,19 @@ class ERCOTRAGAssistant:
             response = await self.llm.ainvoke(context)
             answer = response.content if hasattr(response, 'content') else str(response)
             formatted_answer = self.format_answer(answer)
+
             citations = self.extract_citations(formatted_answer)
+            consistent_answer = self.enforce_consistent_html(formatted_answer)
+
+            logging.info(f"Metadata: {{'total_chunks': {len(chunks)}, 'unique_sources': {len(unique_sources)}, 'processing_time': {self.get_processing_time()}}}")
+
+            logging.info(f"Raw model output: {formatted_answer}")
+            logging.info(f"Processed output: {consistent_answer}")
+
+
             
             return {
-                'answer': formatted_answer,
+                'answer': consistent_answer,
                 'citations': citations,
                 'sources': unique_sources,  # URLs already verified
                 'metadata': {
@@ -487,12 +577,11 @@ class ERCOTRAGAssistant:
                     'processing_time': self.get_processing_time()
                 }
             }
-            
+
         except Exception as e:
             logging.error(f"Error processing query: {e}")
             return {
-                'answer': f"""<p>I encountered an error while processing your query. 
-                            Please try again or rephrase your question.</p>""",
+                'answer': """<p>An error occurred while processing your query.</p>""",
                 'error': str(e),
                 'citations': [],
                 'sources': [],
