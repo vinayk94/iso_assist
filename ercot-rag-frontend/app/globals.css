@@ -43,11 +43,6 @@ cite {
   cursor: pointer;
 }
 
-.answer-content ol {
-  margin-left: 1.5rem;
-  list-style: decimal;
-}
-
 .citation {
   color: blue;
   text-decoration: underline;
@@ -56,10 +51,34 @@ cite {
 
 
 
-ol ol {
-  list-style-type: none; /* Prevent sub-numbering for nested lists */
-  padding-left: 0; /* Reset indent */
+/* Reset base list styles */
+ol {
+  list-style: decimal; /* Ensure ordered lists use decimal numbers */
+  margin-left: 1.5rem;
+  padding-left: 0; /* Prevent extra indentation */
 }
+
+/* Remove nested list styling */
+ol ol {
+  list-style: decimal; /* Allow sub-numbering for nested lists */
+  padding-left: 1.5rem; /* Indent nested lists */
+}
+
+/* Answer-specific list styling */
+.answer-content > ol {
+  margin-left: 1.5rem;
+  list-style: decimal; /* Use decimal numbering */
+}
+
+.answer-content ol ol {
+  list-style-type: lower-alpha; /* Use letters for sub-lists if needed */
+}
+
+/* Fix potential sub-numbering issues */
+ol > li::marker, ol ol > li::marker {
+  content: normal; /* Remove custom markers */
+}
+
 
 
 
