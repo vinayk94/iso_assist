@@ -1,57 +1,99 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Clock } from 'lucide-react';
 import SourceList from './SourceList';
 import type { Source, QueryMetadata, Citation } from '../../lib/types';
 
 interface AnswerDisplayProps {
     answer: string;
-    citations: Citation[];
     sources: Source[];
     metadata: QueryMetadata | undefined; // Handle undefined metadata
+    citations: Citation[];
 }
 
-const sanitizeHtml = (html: string) => {
-    return html
-        .replace(/<h[1-6]>/g, '<h4>')  // Enforce <h4> for all headings
-        .replace(/<\/h[1-6]>/g, '</h4>')
-        .replace(/<p>\s*<\/p>/g, '')   // Remove empty paragraphs
-        .replace(/<ul>\s*<\/ul>/g, '') // Remove empty unordered lists
-        .replace(/<ol>\s*<\/ol>/g, '') // Remove empty ordered lists
-        .replace(/\s+/g, ' ')          // Normalize spaces
-        .trim();
+const formatAnswerContent = (html: string) => {
+    // Step 1: Remove colons after bold headings
+    html = html.replace(/(<strong>[^:]*?)\s*:<\/strong>/g, '$1</strong>'); // Remove colon after bold text
+    html = html.replace(/<\/li>\s*:/g, '</li>'); // Remove colon after list item
+
+    // Step 2: Avoid nested wrapping for numbered lists
+    html = html.replace(/(?<!<\/ol>)\s*(\d+)\.\s+(<strong>.*?<\/strong>)/g, '<li>$1. $2</li>'); // Convert numbered items to <li>
+    html = html.replace(/(?<!<ol>)((?:<li>.*?<\/li>\s*)+)/g, '<ol>$1</ol>'); // Wrap <li> elements in <ol> only if not already inside one
+
+    // Step 3: Ensure proper paragraph tags
+    html = html.replace(/\n\n+/g, '</p><p>'); // Convert double line breaks into paragraph breaks
+    html = html.replace(/\n/g, ' '); // Replace single line breaks with spaces
+
+    // Step 4: Ensure HTML starts and ends with <p>
+    if (!html.startsWith('<p>')) {
+        html = `<p>${html}`;
+    }
+    if (!html.endsWith('</p>')) {
+        html += '</p>';
+    }
+
+    return html.trim();
 };
 
 
-export default function AnswerDisplay({ 
-    answer, 
-    citations, 
-    sources, 
-    metadata 
+
+
+
+
+
+export default function AnswerDisplay({
+    answer,
+    sources,
+    metadata,
 }: AnswerDisplayProps) {
-    // Log metadata and citations for debugging
-    useEffect(() => {
-        console.log("Metadata in AnswerDisplay:", metadata);
-        console.log("Citations in AnswerDisplay:", citations);
-    }, [metadata, citations]);
-
-    console.log("Raw metadata:", metadata); // Debugging
-
-    // Fallback for metadata values
-    const processingTime = metadata?.processing_time 
-        ? `${Number(metadata.processing_time).toFixed(2)}s` 
+    const processingTime = metadata?.processing_time
+        ? `${Number(metadata.processing_time).toFixed(2)}s`
         : 'Processing...';
     const chunkMessage = metadata?.total_chunks
         ? `Found ${metadata.total_chunks} relevant chunks from ${metadata.unique_sources} sources.`
         : 'No relevant chunks found. The answer was generated using general knowledge from verified sources.';
 
+    // Handle clicks on citations (<cite>)
+    const handleCitationClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'CITE') {
+            const sourceId = target.getAttribute('data-source-id');
+            if (sourceId) {
+                const sourceElement = document.getElementById(sourceId);
+                if (sourceElement) {
+                    sourceElement.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.warn(`No source found with ID: ${sourceId}`);
+                }
+            }
+        }
+    };
+
     return (
         <div className="w-full max-w-3xl mx-auto">
             {/* Answer Section */}
             <div className="bg-white rounded-lg shadow-sm p-6 mb-4">
-                {/* Sanitize the answer HTML */}
-                <div dangerouslySetInnerHTML={{ __html: answer }} />
+                <h2 className="font-bold text-xl mb-4">Answer</h2>
+                <div
+                    className="answer-content text-gray-800"
+                    dangerouslySetInnerHTML={{ __html: formatAnswerContent(answer) }}
+                    onClick={(e) => {
+                        const target = e.target as HTMLElement;
+                        if (target.tagName === 'CITE') {
+                            const sourceId = target.getAttribute('data-source-id');
+                            if (sourceId) {
+                                const sourceElement = document.getElementById(`source-${sourceId}`);
+                                if (sourceElement) {
+                                    sourceElement.scrollIntoView({ behavior: 'smooth' });
+                                } else {
+                                    console.warn(`No source found with ID: ${sourceId}`);
+                                }
+                            }
+                        }
+                    }}
+                />
+
 
                 {/* Metadata */}
                 <div className="mt-4 text-sm text-gray-500 flex items-center justify-between">
@@ -67,6 +109,7 @@ export default function AnswerDisplay({
             {sources.length > 0 && (
                 <>
                     <hr className="my-6 border-gray-300" />
+                    <h2 className="font-bold text-xl mb-4">Sources Used</h2>
                     <SourceList sources={sources} />
                 </>
             )}

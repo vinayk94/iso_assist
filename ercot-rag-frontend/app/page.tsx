@@ -84,7 +84,7 @@ export default function Home() {
                     <div className="mt-8">
                         <AnswerDisplay 
                             answer={response.answer}
-                            citations={response.citations} // Pass citations here
+                            citations={response.citations} // Pass citations
                             sources={response.sources}
                             metadata={response.metadata}
                         />

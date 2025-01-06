@@ -23,9 +23,8 @@ export default function SourceList({ sources }: SourceListProps) {
                 {sources.map((source, idx) => (
                     <div
                         key={idx}
-                        id={`source-${source.metadata.document_id}`}
-                        className="bg-white rounded-lg shadow-sm p-4 border border-gray-200
-                                 scroll-mt-8 transition-all duration-200"
+                        id={`source-${source.metadata.document_id}`} // Ensure the id corresponds to `data-source-id` in citations
+                        className="bg-white rounded-lg shadow-sm p-4 border border-gray-200 scroll-mt-8 transition-all duration-200"
                     >
                         <div className="flex justify-between items-start">
                             <div>
@@ -60,6 +59,7 @@ export default function SourceList({ sources }: SourceListProps) {
                     </div>
                 ))}
             </div>
+
         </div>
     );
 }

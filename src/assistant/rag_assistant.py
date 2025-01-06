@@ -326,25 +326,35 @@ class ERCOTRAGAssistant:
         6. Keep the response concise and actionable.
         7. Use HTML formatting for clarity and structure.
 
-        Example:
-        <h3>Registering a DER in ERCOT</h3>
-        <p>Registering a Distributed Energy Resource (DER) in ERCOT involves completing the registration form and obtaining an ESR Dispatch Asset Code.</p>
-
-        <h4>Step 1: Completing the Registration Form</h4>
-        <p>To register a DER, download the appropriate form from the ERCOT website. You can use the <cite data-source-id="123">NOIE Identification and Meter Point Registration Form</cite> for non-scheduled entities, or the <cite data-source-id="124">ELSE Identification and Meter Point Registration Form</cite> for generators with a capacity of 1 MW or greater.</p>
-
-        <h4>Step 2: Obtaining an ESR Dispatch Asset Code</h4>
-        <p>After completing the registration form, download the <cite data-source-id="125">RIOO Export Spreadsheet</cite> to assign an ESR Dispatch Asset Code. Submit the completed spreadsheet to ERCOT.</p>
-
         Sources:
         {chr(10).join(source_text)}
 
-        The response must be structured with embedded citations and valid HTML."""
+        Your response must use inline citations and structured HTML. Do not include a separate "Sources" section."""
 
 
 
+    def format_source_metadata(self, sources: List[Dict]) -> List[Dict]:
+        """
+        Format source metadata to include hyperlinks, structured details, 
+        and all required fields for the response model.
+        """
+        formatted_sources = []
+        for source in sources:
+            url = source['metadata'].get('url', '#')
+            title = source['metadata'].get('title', 'Unknown Source')
+            content_type = source['metadata'].get('type', 'Unknown Type')
 
-
+            # Ensure all required fields are included
+            formatted_sources.append({
+                'chunk_id': source.get('chunk_id'),
+                'metadata': source['metadata'],  # Include original metadata
+                'highlights': source.get('highlights', []),  # Fallback to empty list if missing
+                'relevance': source.get('relevance', 0),  # Fallback to 0 if missing
+                'content': source['content'],
+                'title': f'<a href="{url}" target="_blank">{title}</a>',
+                'type': content_type
+            })
+        return formatted_sources
 
 
 
@@ -361,26 +371,41 @@ class ERCOTRAGAssistant:
     
     
     def format_answer(self, answer: str) -> str:
-        """Format and clean the answer HTML"""
-        # Remove Markdown-style lists to avoid conflicts
-        answer = re.sub(r'^\d+\.\s+', r'<li>', answer, flags=re.MULTILINE)
-        answer = re.sub(r'^\*\s+', r'<li>', answer, flags=re.MULTILINE)
+        """Format and clean the answer HTML."""
+        # Remove the "Sources" section dynamically if present
+        answer = re.sub(r'<h3>Sources</h3>.*?<ul>.*?</ul>', '', answer, flags=re.DOTALL)
 
-        # Ensure proper list nesting
-        answer = re.sub(r'(<li>.*?)(?=<li>|$)', r'\1</li>', answer)
-        answer = re.sub(r'((?:<li>.*?</li>)+)', r'<ol>\1</ol>', answer)
+        # Merge inline <cite> and <a> tags, removing redundant "Reference"
+        answer = re.sub(
+            r'(<cite data-source-id="\d+">.*?</cite>) \((<a .*?>Reference</a>)\)',
+            r'\1: \2',  # Combine <cite> with <a> as a single inline reference
+            answer
+        )
 
-        # Add paragraphs
-        paragraphs = answer.split('\n\n')
-        formatted_paragraphs = []
-        for p in paragraphs:
-            if not p.strip():
-                continue
-            if not (p.startswith('<') and p.endswith('>')):
-                p = f'<p>{p}</p>'
-            formatted_paragraphs.append(p)
+        # Remove leftover "Reference" text
+        answer = re.sub(r'\(Reference\)', '', answer)
 
-        return '\n'.join(formatted_paragraphs)
+        # Add bullets for numbered or bulleted lists
+        answer = re.sub(r'(\d+)\.\s+\*\*(.*?)\*\*', r'<li><strong>\1. \2</strong></li>', answer)
+        answer = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', answer)  # Bold text
+
+        # Wrap bullets in <ol> or <ul>
+        answer = re.sub(r'((<li>.*?</li>\s*)+)', r'<ol>\1</ol>', answer)
+
+        # Ensure proper paragraphs
+        answer = re.sub(r'\n\n+', '</p><p>', answer.strip())
+        if not answer.startswith('<p>'):
+            answer = f'<p>{answer}'
+        if not answer.endswith('</p>'):
+            answer += '</p>'
+
+        # Clean up extra whitespace
+        return re.sub(r'\s+', ' ', answer).strip()
+
+
+
+
+
 
     
     def extract_citations(self, text: str) -> List[Dict]:
@@ -522,10 +547,6 @@ class ERCOTRAGAssistant:
 
         return html
 
-
-
-
-
     async def process_query(self, query: str) -> Dict:
         try:
             self.start_processing()
@@ -560,6 +581,8 @@ class ERCOTRAGAssistant:
             citations = self.extract_citations(formatted_answer)
             consistent_answer = self.enforce_consistent_html(formatted_answer)
 
+            formatted_sources = self.format_source_metadata(unique_sources)
+
             logging.info(f"Metadata: {{'total_chunks': {len(chunks)}, 'unique_sources': {len(unique_sources)}, 'processing_time': {self.get_processing_time()}}}")
 
             logging.info(f"Raw model output: {formatted_answer}")
@@ -570,10 +593,10 @@ class ERCOTRAGAssistant:
             return {
                 'answer': consistent_answer,
                 'citations': citations,
-                'sources': unique_sources,  # URLs already verified
+                'sources': formatted_sources,  # URLs already verified
                 'metadata': {
                     'total_chunks': len(chunks),
-                    'unique_sources': len(unique_sources),
+                    'unique_sources': len(formatted_sources),
                     'processing_time': self.get_processing_time()
                 }
             }

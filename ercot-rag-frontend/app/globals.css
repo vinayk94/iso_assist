@@ -28,4 +28,40 @@ h4 {
   color: #333; /* Adjust color as needed */
 }
 
+/* Styles for Subheadings */
+.answer-display h4 {
+  font-weight: bold;
+  font-size: 1.2rem; /* Adjust as needed */
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #333; /* Darker color for emphasis */
+}
+
+cite {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.answer-content ol {
+  margin-left: 1.5rem;
+  list-style: decimal;
+}
+
+.citation {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+
+ol ol {
+  list-style-type: none; /* Prevent sub-numbering for nested lists */
+  padding-left: 0; /* Reset indent */
+}
+
+
+
+
 
