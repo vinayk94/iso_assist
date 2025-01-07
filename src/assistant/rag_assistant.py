@@ -525,27 +525,30 @@ class ERCOTRAGAssistant:
 
 
     def enforce_consistent_html(self,html: str) -> str:
-        # Normalize headings (allow <h3>, <h4>, etc.)
+        # Normalize headings (allow <h3>)
         html = re.sub(r'<h[1-6]>', '<h3>', html)
         html = re.sub(r'</h[1-6]>', '</h3>', html)
 
-        # Remove redundant or empty tags
-        html = re.sub(r'<h3>\s*</h3>', '', html)  # Remove empty headings
+        # Remove redundant or nested <ul> and <ol> tags
+        html = re.sub(r'<ul>\s*<ol>', '<ol>', html)  # Replace <ul><ol> with <ol>
+        html = re.sub(r'</ol>\s*</ul>', '</ol>', html)  # Replace </ol></ul> with </ol>
 
-        # Fix nested lists
-        html = re.sub(r'<ol>\s*<ol>', '<ol>', html)  # Remove nested <ol>
-        html = re.sub(r'</ol>\s*</ol>', '</ol>', html)  # Close properly
-        html = re.sub(r'<ul>\s*<ul>', '<ul>', html)  # Remove nested <ul>
-        html = re.sub(r'</ul>\s*</ul>', '</ul>', html)  # Close properly
+        # Clean up double <p> wrapping
+        html = re.sub(r'<p>\s*<p>', '<p>', html)  # Merge nested <p>
+        html = re.sub(r'</p>\s*</p>', '</p>', html)  # Remove double closing </p>
 
-        # Fix list items
-        html = re.sub(r'<li>\s*<li>', '<li>', html)  # Merge nested <li>
-        html = re.sub(r'</li>\s*</li>', '</li>', html)  # Close duplicate <li>
+        # Add spacing around lists
+        html = re.sub(r'(<h3>.*?</h3>)\s*<p>(<ol>.*?</ol>)', r'\1<p>\2</p>', html)  # Ensure spacing after heading
+        html = re.sub(r'</ol>(\s*<p>)', r'</ol>\n\1', html)  # Ensure spacing after lists
 
         # Remove extra spaces between tags
         html = re.sub(r'>\s+<', '><', html).strip()
 
         return html
+
+
+
+
 
     async def process_query(self, query: str) -> Dict:
         try:
@@ -584,6 +587,10 @@ class ERCOTRAGAssistant:
             formatted_sources = self.format_source_metadata(unique_sources)
 
             logging.info(f"Metadata: {{'total_chunks': {len(chunks)}, 'unique_sources': {len(unique_sources)}, 'processing_time': {self.get_processing_time()}}}")
+
+
+
+            #consistent_answer = consistent_answer.replace("<ol>", "").replace("</ol>", "").replace("<li>", "").replace("</li>", "")
 
             logging.info(f"Raw model output: {formatted_answer}")
             logging.info(f"Processed output: {consistent_answer}")

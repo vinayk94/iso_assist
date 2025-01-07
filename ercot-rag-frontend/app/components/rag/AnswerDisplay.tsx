@@ -13,31 +13,22 @@ interface AnswerDisplayProps {
 }
 
 const formatAnswerContent = (html: string) => {
-    // Step 1: Remove colons after bold headings
-    html = html.replace(/(<strong>[^:]*?)\s*:<\/strong>/g, '$1</strong>'); // Remove colon after bold text
-    html = html.replace(/<\/li>\s*:/g, '</li>'); // Remove colon after list item
+    // Step 1: Remove unnecessary colons after bold headings
+    html = html.replace(/(<strong>[^:]*?)\s*:<\/strong>/g, '$1</strong>'); 
 
-    // Step 2: Avoid nested wrapping for numbered lists
-    html = html.replace(/(?<!<\/ol>)\s*(\d+)\.\s+(<strong>.*?<\/strong>)/g, '<li>$1. $2</li>'); // Convert numbered items to <li>
-    html = html.replace(/(?<!<ol>)((?:<li>.*?<\/li>\s*)+)/g, '<ol>$1</ol>'); // Wrap <li> elements in <ol> only if not already inside one
+    // Step 2: Fix improperly closed or broken tags
+    html = html.replace(/<\/?ol>/g, ''); // Remove <ol> tags if not needed
+    html = html.replace(/<\/?li>/g, ''); // Remove <li> tags to avoid numbered list styling
 
-    // Step 3: Ensure proper paragraph tags
-    html = html.replace(/\n\n+/g, '</p><p>'); // Convert double line breaks into paragraph breaks
-    html = html.replace(/\n/g, ' '); // Replace single line breaks with spaces
+    // Step 3: Clean up stray line breaks and unnecessary spaces
+    html = html.replace(/\s+/g, ' ').trim(); // Replace multiple spaces/newlines with a single space
 
-    // Step 4: Ensure HTML starts and ends with <p>
-    if (!html.startsWith('<p>')) {
-        html = `<p>${html}`;
-    }
-    if (!html.endsWith('</p>')) {
-        html += '</p>';
-    }
+    // Step 4: Wrap the final content in a <p> tag if not already wrapped
+    if (!html.startsWith('<p>')) html = `<p>${html}`;
+    if (!html.endsWith('</p>')) html += '</p>';
 
-    return html.trim();
+    return html;
 };
-
-
-
 
 
 
@@ -109,7 +100,7 @@ export default function AnswerDisplay({
             {sources.length > 0 && (
                 <>
                     <hr className="my-6 border-gray-300" />
-                    <h2 className="font-bold text-xl mb-4">Sources Used</h2>
+                    <h2 className="font-bold text-xl mb-4"></h2>
                     <SourceList sources={sources} />
                 </>
             )}
