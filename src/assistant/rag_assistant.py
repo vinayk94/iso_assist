@@ -17,10 +17,14 @@ logger = logging.getLogger(__name__)
 
 def get_api_key():
     """Get API key with proper environment handling"""
-    if 'JINA_API_KEY' in os.environ:
-        del os.environ['JINA_API_KEY']
-    load_dotenv(override=True)
-    return os.getenv("JINA_API_KEY")
+    #if 'JINA_API_KEY' in os.environ:
+    #    del os.environ['JINA_API_KEY']
+        # Check if running in Elastic Beanstalk
+    if 'AWS_EXECUTION_ENV' in os.environ:  # Production environment
+        return os.getenv("JINA_API_KEY")
+    else:  # Local development
+        load_dotenv(override=True)
+        return os.getenv("JINA_API_KEY")
 
 
 class ERCOTEmbeddings:
@@ -121,24 +125,30 @@ class ERCOTRAGAssistant:
     
     
 
-    def extract_highlights(self, content: str, query_terms: List[str]) -> List[str]:
-        """Extract meaningful highlights from content"""
-        highlights = []
+    def extract_highlights(self, content: str, query: str) -> List[str]:
+        query_terms = query.lower().split()
         sentences = re.split(r'[.!?]+', content)
+        highlights = []
 
         for sentence in sentences:
             sentence = sentence.strip()
             if not sentence:
                 continue
 
-            # Remove repetitive words
-            sentence = re.sub(r'\b(\w+)\s+\1+\b', r'\1', sentence)
+            # Score sentence based on query relevance
+            score = sum(term in sentence.lower() for term in query_terms)
 
-            # Add to highlights if query terms match
-            if any(term.lower() in sentence.lower() for term in query_terms):
+            # Additional scoring for meaningful content
+            if len(sentence.split()) >= 5:  # Minimum word requirement
+                score += 1
+            if any(term in sentence.lower() for term in ['must', 'should', 'required', 'important']):
+                score += 1
+
+            if score > 0 and sentence not in highlights:
                 highlights.append(sentence)
 
-        return highlights[:3]  # Return top 3 highlights
+        return highlights[:3]  # Limit to top 3 highlights
+
 
     
     def clean_content(self, content: str) -> str:
@@ -219,6 +229,11 @@ class ERCOTRAGAssistant:
         except Exception as e:
             logging.error(f"Error in vector search: {e}")
             raise
+
+        except Exception as e:
+            logging.error(f"Error in vector search: {e}")
+            raise
+
 
 
     def extract_highlights(self, content: str, query: str) -> List[str]:
