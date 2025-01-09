@@ -182,14 +182,6 @@ Full requirements available in `requirements.txt`.
    - Use efficient vector search
    - Cache when possible
 
-## 📝 Contributing
-
-Contributions are welcome! Please read our contributing guidelines and submit pull requests to our GitHub repository.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-
 ## 🙏 Acknowledgments
 
 - JINA AI for embeddings
