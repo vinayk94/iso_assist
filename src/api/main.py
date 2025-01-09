@@ -33,7 +33,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000",
-    "https://iso-assist.onrender.com/",
+    "https://iso-assist.onrender.com",
     ],
     allow_credentials=True,
     allow_methods=["*"],
