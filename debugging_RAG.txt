@@ -1,0 +1,68 @@
+https://www.ercot.com/files/docs/2021/01/07/Resource_Interconnection_Handbook
+
+main app has lead to this as well. and looks like URL ISSUES hasnt been fixed.
+
+nan's are gone.
+
+ERCOT Documentation Assistant
+
+<p>To do a Direct Energy Resource (DER) interconnection in ERCOT, follow these steps:</p> <h4>1. Prepare Required Information</h4> <ul> <ol><li><strong>ESR Dispatch Asset Code:</strong> Identify the ESR Dispatch Asset code for your DER. This code is named with ERCOT and can be found in the <cite data-source-id="78">Understanding the RIOO Export spreadsheet</cite>.</li></ol> </ul> <h4>2. Understand Required Forms</h4> <p>Refer to the <cite data-source-id="69">Resource Interconnection Handbook</cite> for a comprehensive list of ERCOT forms required for the interconnection process. Appendix B of the handbook provides a detailed list of these forms.</p> <h4>3. Submit Interconnection Request</h4> <p>Submit your interconnection request using the appropriate forms from the Resource Interconnection Handbook. These forms may include, but are not limited to:</p> <ul> <ol><li>RARF (Resource Acknowledgement and Resource Form)</li></ol> <ol><li>EPS Meter Design Proposal</li></ol> <ol><li>DGR Workshop 12 (if applicable)</li></ol> </ul> <p>For assistance, contact your designated ERCOT Account Manager or refer to the TDSP contacts list at <cite data-source-id="69">https://www.ercot.com/files/docs/2021/11/23/Market_Participant_List.xls</cite>.</p> <h4>4. Register for Settlement Block Load Transfer</h4> <p>After your interconnection request is approved, register for Settlement Block Load Transfer using the <cite data-source-id="98">Settlement Block Load Transfer Registration Form</cite>.</p> <h4>5. Participate in Retail Market Test Flight (if applicable)</h4> <p>If you are a new Load Serving Entity (LSE) or Retail Electric Provider (REP), you may need to participate in the Retail Market Test Flight. For more information, send an e-mail to <a href="mailto:RetailMarketTesting@ercot.com">RetailMarketTesting@ercot.com</a> or refer to the <cite data-source-id="15">Retail Market Test Flight Information</cite>.</p> <p>Please note that the interconnection process and required forms may change over time. Always refer to the most recent version of the ERCOT documentation for the most accurate information.</p>
+
+Processed in 0.00s
+
+Found 0 relevant chunks from 0 sources
+
+Sources Used (4)
+
+Understanding the RIOO Export spreadsheet
+
+Document
+
+56% match
+
+Key Excerpts:
+
+ESR Dispatch Asset code (named with ERCOT)
+
+View Source12/31/2024
+
+Resource Interconnection Handbook
+
+Document
+
+53% match
+
+Key Excerpts:
+
+Here is the Resource Entity page on ercot
+
+ercot
+
+com/services/rq/re Here is the RARF Glossary Site: https://www
+
+View Source12/31/2024
+
+Settlement Block Load Transfer Registration Form
+
+Document
+
+52% match
+
+Key Excerpts:
+
+, please contact your designated ERCOT Account Manager or
+
+View Source12/31/2024
+
+Retail Market Test Flight Information
+
+Web Page
+
+51% match
+
+Key Excerpts:
+
+For more information, send an e-mail to RetailMarketTesting@ercot
+
+View Source
+

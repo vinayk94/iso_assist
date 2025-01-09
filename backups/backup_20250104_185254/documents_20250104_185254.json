@@ -1,0 +1,1312 @@
+[
+  {
+    "id": 1,
+    "url": "https://www.ercot.com/services/rq",
+    "title": "Registration and Qualification",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:09.221576",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq"
+  },
+  {
+    "id": 2,
+    "url": "https://www.ercot.com/services/rq/crr",
+    "title": "Congestion Revenue Rights Account Holder",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:10.917309",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/crr"
+  },
+  {
+    "id": 3,
+    "url": "https://www.ercot.com/services/rq/integration",
+    "title": "Resource Integration",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:12.631715",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/integration"
+  },
+  {
+    "id": 4,
+    "url": "https://www.ercot.com/services/rq/imre",
+    "title": "Independent Market Information System Registered Entity",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:14.311781",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/imre"
+  },
+  {
+    "id": 5,
+    "url": "https://www.ercot.com/services/rq/tdsp",
+    "title": "Transmission/Distribution Service Providers",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:15.999950",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/tdsp"
+  },
+  {
+    "id": 6,
+    "url": "https://www.ercot.com/services/rq/qse",
+    "title": "Qualified Scheduling Entities",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:17.741598",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/qse"
+  },
+  {
+    "id": 7,
+    "url": "https://www.ercot.com/services/rq/re/dgresource/",
+    "title": "Distributed Generation",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:19.535158",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/re/dgresource/"
+  },
+  {
+    "id": 8,
+    "url": "https://www.ercot.com/services/rq/re/dgresource",
+    "title": "Distributed Generation",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:21.280063",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/re/dgresource"
+  },
+  {
+    "id": 9,
+    "url": "https://www.ercot.com/services/rq/lse",
+    "title": "Load Serving Entities",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:23.029253",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse"
+  },
+  {
+    "id": 10,
+    "url": "https://www.ercot.com/services/rq/re",
+    "title": "Resource Entities",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:24.895408",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/re"
+  },
+  {
+    "id": 11,
+    "url": "https://www.ercot.com/services/rq/credit",
+    "title": "Credit",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:26.591802",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/credit"
+  },
+  {
+    "id": 12,
+    "url": "https://www.ercot.com/services/rq/lse/trt/index.html",
+    "title": "Texas Retail Market Testing",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:28.456877",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse/trt/index.html"
+  },
+  {
+    "id": 13,
+    "url": "https://www.ercot.com/services/rq/lse/index",
+    "title": "Load Serving Entities",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:30.255621",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse/index"
+  },
+  {
+    "id": 14,
+    "url": "https://www.ercot.com/services/rq/re/newqserep-steps",
+    "title": "Generation Resources - Steps to Establish New QSE Relationship",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:31.936090",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/re/newqserep-steps"
+  },
+  {
+    "id": 15,
+    "url": "https://www.ercot.com/services/rq/lse/tfi",
+    "title": "Retail Market Test Flight Information",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:33.611552",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse/tfi"
+  },
+  {
+    "id": 16,
+    "url": "https://www.ercot.com/services/rq/lse/trt/index",
+    "title": "Texas Retail Market Testing",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:35.350075",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse/trt/index"
+  },
+  {
+    "id": 17,
+    "url": "https://www.ercot.com/services/rq/lse/tfi/index",
+    "title": "Retail Market Test Flight Information",
+    "content_type": "web",
+    "created_at": "2024-12-31T03:30:37.019412",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/services/rq/lse/tfi/index"
+  },
+  {
+    "id": 97,
+    "url": "https://www.ercot.com/files/docs/2008/08/12/noie_registration_meter_and_points_form_ver_9.1.xls",
+    "title": "NOIE Identification and Meter Point Registration Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2008/08/12/noie_registration_meter_and_points_form_ver_9.1.xls"
+  },
+  {
+    "id": 98,
+    "url": "https://www.ercot.com/files/docs/2011/09/01/settlement_blt_registration_form_rev_4.xls",
+    "title": "Settlement Block Load Transfer Registration Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2011/09/01/settlement_blt_registration_form_rev_4.xls"
+  },
+  {
+    "id": 99,
+    "url": "https://www.ercot.com/files/docs/2021/06/02/TDSP-CAs.xlsx",
+    "title": "TDSP Confidentiality Agreement List",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/06/02/TDSP-CAs.xlsx"
+  },
+  {
+    "id": 100,
+    "url": "https://www.ercot.com/files/docs/2020/08/26/ERCOT_TDSPReadGeneration_Form_v6.1.xlsx",
+    "title": "TDSP Read Generation Metering Registration Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2020/08/26/ERCOT_TDSPReadGeneration_Form_v6.1.xlsx"
+  },
+  {
+    "id": 101,
+    "url": "https://www.ercot.com/files/docs/2012/05/10/tsp_blt_registration_form_rev_5.xls",
+    "title": "TSP Block Load Transfer Registration Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2012/05/10/tsp_blt_registration_form_rev_5.xls"
+  },
+  {
+    "id": 102,
+    "url": "https://www.ercot.com/files/docs/2021/05/04/Transmission-Operator-Designation-or-Termination-Form.docx",
+    "title": "Transmission Operator Designation or Termination Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/05/04/Transmission-Operator-Designation-or-Termination-Form.docx"
+  },
+  {
+    "id": 206,
+    "url": "https://www.ercot.com/services/rq/Commissioning Plan Template.xls_v1",
+    "title": "Commissioning Plan Template.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Commissioning Plan Template.xls",
+    "local_path": "Resource Integration\\Commissioning Plan Template.xls",
+    "original_url": "file://Resource Integration\\Commissioning Plan Template.xls"
+  },
+  {
+    "id": 207,
+    "url": "https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Over 10MW.pdf_v1",
+    "title": "Creating an INR for a Generation Resource Over 10MW.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Creating an INR for a Generation Resource Over 10MW.pdf",
+    "local_path": "Resource Integration\\Creating an INR for a Generation Resource Over 10MW.pdf",
+    "original_url": "file://Resource Integration\\Creating an INR for a Generation Resource Over 10MW.pdf"
+  },
+  {
+    "id": 208,
+    "url": "https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Under 10MW.pdf_v1",
+    "title": "Creating an INR for a Generation Resource Under 10MW.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Creating an INR for a Generation Resource Under 10MW.pdf",
+    "local_path": "Resource Integration\\Creating an INR for a Generation Resource Under 10MW.pdf",
+    "original_url": "file://Resource Integration\\Creating an INR for a Generation Resource Under 10MW.pdf"
+  },
+  {
+    "id": 210,
+    "url": "https://www.ercot.com/services/rq/ERCOT New Generator Commissioning Checklist.docx_v1",
+    "title": "ERCOT New Generator Commissioning Checklist.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ERCOT New Generator Commissioning Checklist.docx",
+    "local_path": "Resource Integration\\ERCOT New Generator Commissioning Checklist.docx",
+    "original_url": "file://Resource Integration\\ERCOT New Generator Commissioning Checklist.docx"
+  },
+  {
+    "id": 212,
+    "url": "https://www.ercot.com/services/rq/IE Sign Up Guide.pdf_v1",
+    "title": "IE Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "IE Sign Up Guide.pdf",
+    "local_path": "Resource Integration\\IE Sign Up Guide.pdf",
+    "original_url": "file://Resource Integration\\IE Sign Up Guide.pdf"
+  },
+  {
+    "id": 213,
+    "url": "https://www.ercot.com/services/rq/Managing INRs as a TSPDSP.pdf_v1",
+    "title": "Managing INRs as a TSPDSP.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing INRs as a TSPDSP.pdf",
+    "local_path": "Resource Integration\\Managing INRs as a TSPDSP.pdf",
+    "original_url": "file://Resource Integration\\Managing INRs as a TSPDSP.pdf"
+  },
+  {
+    "id": 214,
+    "url": "https://www.ercot.com/services/rq/Managing Your INR as an IE or RE.pdf_v1",
+    "title": "Managing Your INR as an IE or RE.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing Your INR as an IE or RE.pdf",
+    "local_path": "Resource Integration\\Managing Your INR as an IE or RE.pdf",
+    "original_url": "file://Resource Integration\\Managing Your INR as an IE or RE.pdf"
+  },
+  {
+    "id": 215,
+    "url": "https://www.ercot.com/services/rq/Managing Your RIOO Services User Account.pdf_v1",
+    "title": "Managing Your RIOO Services User Account.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing Your RIOO Services User Account.pdf",
+    "local_path": "Resource Integration\\Managing Your RIOO Services User Account.pdf",
+    "original_url": "file://Resource Integration\\Managing Your RIOO Services User Account.pdf"
+  },
+  {
+    "id": 218,
+    "url": "https://www.ercot.com/services/rq/RE Sign Up Guide.pdf_v1",
+    "title": "RE Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "RE Sign Up Guide.pdf",
+    "local_path": "Resource Integration\\RE Sign Up Guide.pdf",
+    "original_url": "file://Resource Integration\\RE Sign Up Guide.pdf"
+  },
+  {
+    "id": 35,
+    "url": "https://www.ercot.com/files/docs/2016/12/14/CP_Credit_Application.docx",
+    "title": "Credit Application",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2016/12/14/CP_Credit_Application.docx"
+  },
+  {
+    "id": 36,
+    "url": "https://www.ercot.com/files/docs/2021/11/19/FCE_Calculations_ProxySP_Input.xls",
+    "title": "DAM Proxy Settlement Points",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/11/19/FCE_Calculations_ProxySP_Input.xls"
+  },
+  {
+    "id": 37,
+    "url": "https://www.ercot.com/files/docs/2018/08/30/Electricity_Futures_Products_Source.pdf",
+    "title": "Electricity Futures Products Source",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2018/08/30/Electricity_Futures_Products_Source.pdf"
+  },
+  {
+    "id": 38,
+    "url": "https://www.ercot.com/files/docs/2023/09/01/Letter%20of%20Credit%202023.docx",
+    "title": "Letter of Credit",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/09/01/Letter%20of%20Credit%202023.docx"
+  },
+  {
+    "id": 39,
+    "url": "https://www.ercot.com/files/docs/2023/09/01/Surety%20Bond%202023.docx",
+    "title": "Surety Bond",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/09/01/Surety%20Bond%202023.docx"
+  },
+  {
+    "id": 40,
+    "url": "https://www.ercot.com/files/docs/2021/12/10/TEMSFM_Standard_Letter_of_Credit.docx",
+    "title": "Letter of Credit for Securitization Default Charges Under PURA Chapter 39, Subchapter M",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/12/10/TEMSFM_Standard_Letter_of_Credit.docx"
+  },
+  {
+    "id": 41,
+    "url": "https://www.ercot.com/files/docs/2022/05/13/TEMSFN_Standard_Letter_of_Credit.docx",
+    "title": "Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39, Subchapter N",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/05/13/TEMSFN_Standard_Letter_of_Credit.docx"
+  },
+  {
+    "id": 42,
+    "url": "https://www.ercot.com/files/docs/2009/12/03/noie_load_zone_establishment_form_20071001.xls",
+    "title": "NOIE Load Zone Establishment Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2009/12/03/noie_load_zone_establishment_form_20071001.xls"
+  },
+  {
+    "id": 43,
+    "url": "https://www.ercot.com/files/docs/2010/12/10/ercot_nodal_market_guide_v3.0.doc",
+    "title": "Market Guide",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2010/12/10/ercot_nodal_market_guide_v3.0.doc"
+  },
+  {
+    "id": 44,
+    "url": "https://www.ercot.com/files/docs/2019/05/31/Application_for_Registration_-_Data_Agent-Only_QSE.docx",
+    "title": "Application for Registration  - Data Agent - Only QSE",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2019/05/31/Application_for_Registration_-_Data_Agent-Only_QSE.docx"
+  },
+  {
+    "id": 45,
+    "url": "https://www.ercot.com/files/docs/2015/06/10/annual_certification_form_to_meet_ercot_additional_minimum_p.doc",
+    "title": "Annual Certification Form to Meet ERCOT Additional Minimum Parti",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2015/06/10/annual_certification_form_to_meet_ercot_additional_minimum_p.doc"
+  },
+  {
+    "id": 46,
+    "url": "https://www.ercot.com/files/docs/2016/08/02/Declaration_of_Subordinate_QSEs.docx",
+    "title": "Declaration of Subordinate QSEs",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2016/08/02/Declaration_of_Subordinate_QSEs.docx"
+  },
+  {
+    "id": 47,
+    "url": "https://www.ercot.com/files/docs/2011/01/07/iccp_interim_update_request_v1.0.doc",
+    "title": "ICCP Interim Update Request v1.0",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2011/01/07/iccp_interim_update_request_v1.0.doc"
+  },
+  {
+    "id": 48,
+    "url": "https://www.ercot.com/files/docs/2022/01/25/ERCOT_QSE_Qualification_Guide_110123.docx",
+    "title": "QSE Qualification Guide",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/25/ERCOT_QSE_Qualification_Guide_110123.docx"
+  },
+  {
+    "id": 49,
+    "url": "https://www.ercot.com/files/docs/2022/02/10/ERCOT_Nodal_ICCP_Communications_Handbook.docx",
+    "title": "ERCOT Nodal ICCP Communications Handbook v3.22",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/02/10/ERCOT_Nodal_ICCP_Communications_Handbook.docx"
+  },
+  {
+    "id": 50,
+    "url": "https://www.ercot.com/files/docs/2024/05/31/ERCOT_Nodal_ICCP_Communications_Handbook_V4.01.docx",
+    "title": "ERCOT Nodal ICCP Communications Handbook RTC+B v4.01",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2024/05/31/ERCOT_Nodal_ICCP_Communications_Handbook_V4.01.docx"
+  },
+  {
+    "id": 51,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/IE-SignUp-Guide-for-RIOO-Services.pdf",
+    "title": "IE Sign Up Guide",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/IE-SignUp-Guide-for-RIOO-Services.pdf"
+  },
+  {
+    "id": 52,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/RE-SignUp-Guide-for-RIOO-Services.pdf",
+    "title": "RE Sign Up Guide",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/RE-SignUp-Guide-for-RIOO-Services.pdf"
+  },
+  {
+    "id": 53,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/TSP-Sign-Up-for-RIOO-Services.pdf",
+    "title": "TSP/DSP Sign Up Guide",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/TSP-Sign-Up-for-RIOO-Services.pdf"
+  },
+  {
+    "id": 54,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/Managing-Your-RIOO-Services-User-Account.pdf",
+    "title": "Managing Your RIOO Services User Account",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/Managing-Your-RIOO-Services-User-Account.pdf"
+  },
+  {
+    "id": 55,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-a-Resource-Smaller-than-10MW.pdf",
+    "title": "Creating an INR for a Generation Resource Under 10MW",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-a-Resource-Smaller-than-10MW.pdf"
+  },
+  {
+    "id": 56,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-Resource-Larger-than-10MW.pdf",
+    "title": "Creating an INR for a Generation Resource Over 10MW",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-Resource-Larger-than-10MW.pdf"
+  },
+  {
+    "id": 57,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/Managing-Your-INR-as-an-IE-or-RE.pdf",
+    "title": "Managing Your INR as an IE or RE",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/Managing-Your-INR-as-an-IE-or-RE.pdf"
+  },
+  {
+    "id": 58,
+    "url": "https://www.ercot.com/files/docs/2022/01/14/Managing-INRs-as-a-TSP-or-DSP.pdf",
+    "title": "Managing INRs as a TSP/DSP",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/01/14/Managing-INRs-as-a-TSP-or-DSP.pdf"
+  },
+  {
+    "id": 59,
+    "url": "https://www.ercot.com/files/docs/2018/12/10/commissioningPlanTemplate.xls",
+    "title": "Commissioning Plan Template",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2018/12/10/commissioningPlanTemplate.xls"
+  },
+  {
+    "id": 60,
+    "url": "https://www.ercot.com/files/docs/2021/05/12/Generation_Resource_Splitting_Agreement_rev_051121.docx",
+    "title": "Generation Resource Splitting Agreement",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/05/12/Generation_Resource_Splitting_Agreement_rev_051121.docx"
+  },
+  {
+    "id": 61,
+    "url": "https://www.ercot.com/files/docs/2018/12/10/RE_Model_Interim_Update_Request_V1.1.doc",
+    "title": "Network Model Interim Update Request",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2018/12/10/RE_Model_Interim_Update_Request_V1.1.doc"
+  },
+  {
+    "id": 62,
+    "url": "https://www.ercot.com/files/docs/2018/12/10/MOUandEC_Opt-In_Checklist.doc",
+    "title": "MOU and EC Opt-In Checklist",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2018/12/10/MOUandEC_Opt-In_Checklist.doc"
+  },
+  {
+    "id": 63,
+    "url": "https://www.ercot.com/files/docs/2022/02/22/ERCOT_New_Generator_Commissioning_Checklist.docx",
+    "title": "ERCOT New Generator Commissioning Checklist",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/02/22/ERCOT_New_Generator_Commissioning_Checklist.docx"
+  },
+  {
+    "id": 64,
+    "url": "https://www.ercot.com/files/docs/2019/09/30/DGR_Conditions_Document_9.26.19.docx",
+    "title": "DGR Conditions",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2019/09/30/DGR_Conditions_Document_9.26.19.docx"
+  },
+  {
+    "id": 68,
+    "url": "https://www.ercot.com/files/docs/2021/03/30/Self-Limiting_Facilities_In_the_Interconnection_Process_v1_3c.docx",
+    "title": "Self Limiting Facilities In the Interconnection Process",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/03/30/Self-Limiting_Facilities_In_the_Interconnection_Process_v1_3c.docx"
+  },
+  {
+    "id": 69,
+    "url": "https://www.ercot.com/files/docs/2021/01/07/Resource_Interconnection_Handbook_v1.94_03012023.docx",
+    "title": "Resource Interconnection Handbook",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/01/07/Resource_Interconnection_Handbook_v1.94_03012023.docx"
+  },
+  {
+    "id": 76,
+    "url": "https://www.ercot.com/files/docs/2023/11/20/Nov_2023_Changes_to_RIOO_IS.docx",
+    "title": "November 2023 Changes to RIOO-IS \u2013 Self Limiting Facilities and POIB",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/11/20/Nov_2023_Changes_to_RIOO_IS.docx"
+  },
+  {
+    "id": 77,
+    "url": "https://www.ercot.com/files/docs/2023/01/04/RIOO%20Processes%20with%20RIOO-Create.docx",
+    "title": "Entering Resource Registration Data in RIOO-IS",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/01/04/RIOO%20Processes%20with%20RIOO-Create.docx"
+  },
+  {
+    "id": 78,
+    "url": "https://www.ercot.com/files/docs/2023/05/15/RIOO_IS_Export_data_help_post.xlsx",
+    "title": "Understanding the RIOO Export spreadsheet",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/05/15/RIOO_IS_Export_data_help_post.xlsx"
+  },
+  {
+    "id": 81,
+    "url": "https://www.ercot.com/files/docs/2021/02/09/Battery_RFI_Template_03182024.xlsx",
+    "title": "Battery Request for Information Template",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/02/09/Battery_RFI_Template_03182024.xlsx"
+  },
+  {
+    "id": 82,
+    "url": "https://www.ercot.com/files/docs/2020/12/04/ERCOT_SSR_Study_Scope_Guideline_10-27-2020-external.docx",
+    "title": "ERCOT SSR Study Scope Guidelines",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2020/12/04/ERCOT_SSR_Study_Scope_Guideline_10-27-2020-external.docx"
+  },
+  {
+    "id": 83,
+    "url": "https://www.ercot.com/files/docs/2020/04/15/Reactive_Study_Guide_v10_April2020.docx",
+    "title": "Reactive Study Scope",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2020/04/15/Reactive_Study_Guide_v10_April2020.docx"
+  },
+  {
+    "id": 84,
+    "url": "https://www.ercot.com/files/docs/2019/09/13/SGIA.doc",
+    "title": "Standard Generation Interconnection Agreement",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2019/09/13/SGIA.doc"
+  },
+  {
+    "id": 85,
+    "url": "https://www.ercot.com/files/docs/2021/02/09/AVR_Test_of_BESS_DGRs_02032021_v2.docx",
+    "title": "AVR Test of BESS DGRs 02032021 v2",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/02/09/AVR_Test_of_BESS_DGRs_02032021_v2.docx"
+  },
+  {
+    "id": 86,
+    "url": "https://www.ercot.com/files/docs/2020/12/30/IRR_AVR_testing_expectations_12302020.docx",
+    "title": "AVR Testing Expectations for IRR",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2020/12/30/IRR_AVR_testing_expectations_12302020.docx"
+  },
+  {
+    "id": 87,
+    "url": "https://www.ercot.com/files/docs/2020/12/30/ERCOT_AVR_PSS_Test_Guideline_for_Conventional_Generators_v1.0.docx",
+    "title": "AVR and PSS Test Guidelines for Conventional Generation",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2020/12/30/ERCOT_AVR_PSS_Test_Guideline_for_Conventional_Generators_v1.0.docx"
+  },
+  {
+    "id": 88,
+    "url": "https://www.ercot.com/files/docs/2021/09/15/Combined_AVR_Template_1.21.xlsx",
+    "title": "Combined AVR Template 1.21",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2021/09/15/Combined_AVR_Template_1.21.xlsx"
+  },
+  {
+    "id": 91,
+    "url": "https://www.ercot.com/files/docs/2022/04/01/08D-040122.doc",
+    "title": "Section 8 Attachment D:  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2022/04/01/08D-040122.doc"
+  },
+  {
+    "id": 92,
+    "url": "https://www.ercot.com/files/docs/2023/10/17/Exception_Request_12282023.docx",
+    "title": "PGRR103 Good Cause Exception Request",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2023/10/17/Exception_Request_12282023.docx"
+  },
+  {
+    "id": 96,
+    "url": "https://www.ercot.com/files/docs/2016/02/04/else_identification_and_meter_points_registration_form_ver2.xls",
+    "title": "ELSE Identification and Meter Point Registration Form",
+    "content_type": "document",
+    "created_at": "2024-12-31T03:50:20.721487",
+    "file_name": null,
+    "local_path": null,
+    "original_url": "https://www.ercot.com/files/docs/2016/02/04/else_identification_and_meter_points_registration_form_ver2.xls"
+  },
+  {
+    "id": 176,
+    "url": "https://www.ercot.com/services/rq/Letter of Credit.docx",
+    "title": "Letter of Credit.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Letter of Credit.docx",
+    "local_path": "Credit\\Letter of Credit.docx",
+    "original_url": "file://Credit\\Letter of Credit.docx"
+  },
+  {
+    "id": 177,
+    "url": "https://www.ercot.com/services/rq/Surety Bond.docx",
+    "title": "Surety Bond.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Surety Bond.docx",
+    "local_path": "Credit\\Surety Bond.docx",
+    "original_url": "file://Credit\\Surety Bond.docx"
+  },
+  {
+    "id": 178,
+    "url": "https://www.ercot.com/services/rq/NOIE Load Zone Establishment Form.xls",
+    "title": "NOIE Load Zone Establishment Form.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "NOIE Load Zone Establishment Form.xls",
+    "local_path": "Load Serving Entities\\NOIE Load Zone Establishment Form.xls",
+    "original_url": "file://Load Serving Entities\\NOIE Load Zone Establishment Form.xls"
+  },
+  {
+    "id": 179,
+    "url": "https://www.ercot.com/services/rq/Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc",
+    "title": "Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc",
+    "local_path": "Qualified Scheduling Entities\\Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc",
+    "original_url": "file://Qualified Scheduling Entities\\Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc"
+  },
+  {
+    "id": 180,
+    "url": "https://www.ercot.com/services/rq/Application for Registration  - Data Agent - Only QSE.docx",
+    "title": "Application for Registration  - Data Agent - Only QSE.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Application for Registration  - Data Agent - Only QSE.docx",
+    "local_path": "Qualified Scheduling Entities\\Application for Registration  - Data Agent - Only QSE.docx",
+    "original_url": "file://Qualified Scheduling Entities\\Application for Registration  - Data Agent - Only QSE.docx"
+  },
+  {
+    "id": 181,
+    "url": "https://www.ercot.com/services/rq/Declaration of Subordinate QSEs.docx",
+    "title": "Declaration of Subordinate QSEs.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Declaration of Subordinate QSEs.docx",
+    "local_path": "Qualified Scheduling Entities\\Declaration of Subordinate QSEs.docx",
+    "original_url": "file://Qualified Scheduling Entities\\Declaration of Subordinate QSEs.docx"
+  },
+  {
+    "id": 182,
+    "url": "https://www.ercot.com/services/rq/ICCP Interim Update Request v1.0.doc",
+    "title": "ICCP Interim Update Request v1.0.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ICCP Interim Update Request v1.0.doc",
+    "local_path": "Qualified Scheduling Entities\\ICCP Interim Update Request v1.0.doc",
+    "original_url": "file://Qualified Scheduling Entities\\ICCP Interim Update Request v1.0.doc"
+  },
+  {
+    "id": 183,
+    "url": "https://www.ercot.com/services/rq/Market Guide.doc",
+    "title": "Market Guide.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Market Guide.doc",
+    "local_path": "Qualified Scheduling Entities\\Market Guide.doc",
+    "original_url": "file://Qualified Scheduling Entities\\Market Guide.doc"
+  },
+  {
+    "id": 184,
+    "url": "https://www.ercot.com/services/rq/QSE Qualification Guide.docx",
+    "title": "QSE Qualification Guide.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "QSE Qualification Guide.docx",
+    "local_path": "Qualified Scheduling Entities\\QSE Qualification Guide.docx",
+    "original_url": "file://Qualified Scheduling Entities\\QSE Qualification Guide.docx"
+  },
+  {
+    "id": 185,
+    "url": "https://www.ercot.com/services/rq/Commissioning Plan Template.xls",
+    "title": "Commissioning Plan Template.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Commissioning Plan Template.xls",
+    "local_path": "Resource Entities\\Commissioning Plan Template.xls",
+    "original_url": "file://Resource Entities\\Commissioning Plan Template.xls"
+  },
+  {
+    "id": 186,
+    "url": "https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Over 10MW.pdf",
+    "title": "Creating an INR for a Generation Resource Over 10MW.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Creating an INR for a Generation Resource Over 10MW.pdf",
+    "local_path": "Resource Entities\\Creating an INR for a Generation Resource Over 10MW.pdf",
+    "original_url": "file://Resource Entities\\Creating an INR for a Generation Resource Over 10MW.pdf"
+  },
+  {
+    "id": 187,
+    "url": "https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Under 10MW.pdf",
+    "title": "Creating an INR for a Generation Resource Under 10MW.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Creating an INR for a Generation Resource Under 10MW.pdf",
+    "local_path": "Resource Entities\\Creating an INR for a Generation Resource Under 10MW.pdf",
+    "original_url": "file://Resource Entities\\Creating an INR for a Generation Resource Under 10MW.pdf"
+  },
+  {
+    "id": 188,
+    "url": "https://www.ercot.com/services/rq/DGR Conditions.docx",
+    "title": "DGR Conditions.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "DGR Conditions.docx",
+    "local_path": "Resource Entities\\DGR Conditions.docx",
+    "original_url": "file://Resource Entities\\DGR Conditions.docx"
+  },
+  {
+    "id": 189,
+    "url": "https://www.ercot.com/services/rq/ERCOT New Generator Commissioning Checklist.docx",
+    "title": "ERCOT New Generator Commissioning Checklist.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ERCOT New Generator Commissioning Checklist.docx",
+    "local_path": "Resource Entities\\ERCOT New Generator Commissioning Checklist.docx",
+    "original_url": "file://Resource Entities\\ERCOT New Generator Commissioning Checklist.docx"
+  },
+  {
+    "id": 190,
+    "url": "https://www.ercot.com/services/rq/ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx",
+    "title": "ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx",
+    "local_path": "Resource Entities\\ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx",
+    "original_url": "file://Resource Entities\\ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx"
+  },
+  {
+    "id": 191,
+    "url": "https://www.ercot.com/services/rq/ERCOT Nodal ICCP Communications Handbook v3.22.docx",
+    "title": "ERCOT Nodal ICCP Communications Handbook v3.22.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ERCOT Nodal ICCP Communications Handbook v3.22.docx",
+    "local_path": "Resource Entities\\ERCOT Nodal ICCP Communications Handbook v3.22.docx",
+    "original_url": "file://Resource Entities\\ERCOT Nodal ICCP Communications Handbook v3.22.docx"
+  },
+  {
+    "id": 192,
+    "url": "https://www.ercot.com/services/rq/Generation Resource Splitting Agreement.docx",
+    "title": "Generation Resource Splitting Agreement.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Generation Resource Splitting Agreement.docx",
+    "local_path": "Resource Entities\\Generation Resource Splitting Agreement.docx",
+    "original_url": "file://Resource Entities\\Generation Resource Splitting Agreement.docx"
+  },
+  {
+    "id": 193,
+    "url": "https://www.ercot.com/services/rq/IE Sign Up Guide.pdf",
+    "title": "IE Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "IE Sign Up Guide.pdf",
+    "local_path": "Resource Entities\\IE Sign Up Guide.pdf",
+    "original_url": "file://Resource Entities\\IE Sign Up Guide.pdf"
+  },
+  {
+    "id": 194,
+    "url": "https://www.ercot.com/services/rq/Managing INRs as a TSPDSP.pdf",
+    "title": "Managing INRs as a TSPDSP.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing INRs as a TSPDSP.pdf",
+    "local_path": "Resource Entities\\Managing INRs as a TSPDSP.pdf",
+    "original_url": "file://Resource Entities\\Managing INRs as a TSPDSP.pdf"
+  },
+  {
+    "id": 171,
+    "url": "https://www.ercot.com/services/rq/Credit Application.docx",
+    "title": "Credit Application.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Credit Application.docx",
+    "local_path": "Credit\\Credit Application.docx",
+    "original_url": "file://Credit\\Credit Application.docx"
+  },
+  {
+    "id": 195,
+    "url": "https://www.ercot.com/services/rq/Managing Your INR as an IE or RE.pdf",
+    "title": "Managing Your INR as an IE or RE.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing Your INR as an IE or RE.pdf",
+    "local_path": "Resource Entities\\Managing Your INR as an IE or RE.pdf",
+    "original_url": "file://Resource Entities\\Managing Your INR as an IE or RE.pdf"
+  },
+  {
+    "id": 196,
+    "url": "https://www.ercot.com/services/rq/Managing Your RIOO Services User Account.pdf",
+    "title": "Managing Your RIOO Services User Account.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Managing Your RIOO Services User Account.pdf",
+    "local_path": "Resource Entities\\Managing Your RIOO Services User Account.pdf",
+    "original_url": "file://Resource Entities\\Managing Your RIOO Services User Account.pdf"
+  },
+  {
+    "id": 197,
+    "url": "https://www.ercot.com/services/rq/MOU and EC Opt-In Checklist.doc",
+    "title": "MOU and EC Opt-In Checklist.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "MOU and EC Opt-In Checklist.doc",
+    "local_path": "Resource Entities\\MOU and EC Opt-In Checklist.doc",
+    "original_url": "file://Resource Entities\\MOU and EC Opt-In Checklist.doc"
+  },
+  {
+    "id": 198,
+    "url": "https://www.ercot.com/services/rq/Network Model Interim Update Request.doc",
+    "title": "Network Model Interim Update Request.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Network Model Interim Update Request.doc",
+    "local_path": "Resource Entities\\Network Model Interim Update Request.doc",
+    "original_url": "file://Resource Entities\\Network Model Interim Update Request.doc"
+  },
+  {
+    "id": 199,
+    "url": "https://www.ercot.com/services/rq/RE Sign Up Guide.pdf",
+    "title": "RE Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "RE Sign Up Guide.pdf",
+    "local_path": "Resource Entities\\RE Sign Up Guide.pdf",
+    "original_url": "file://Resource Entities\\RE Sign Up Guide.pdf"
+  },
+  {
+    "id": 200,
+    "url": "https://www.ercot.com/services/rq/TSPDSP Sign Up Guide.pdf",
+    "title": "TSPDSP Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "TSPDSP Sign Up Guide.pdf",
+    "local_path": "Resource Entities\\TSPDSP Sign Up Guide.pdf",
+    "original_url": "file://Resource Entities\\TSPDSP Sign Up Guide.pdf"
+  },
+  {
+    "id": 205,
+    "url": "https://www.ercot.com/services/rq/Combined AVR Template 1.21.xlsx",
+    "title": "Combined AVR Template 1.21.xlsx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Combined AVR Template 1.21.xlsx",
+    "local_path": "Resource Integration\\Combined AVR Template 1.21.xlsx",
+    "original_url": "file://Resource Integration\\Combined AVR Template 1.21.xlsx"
+  },
+  {
+    "id": 219,
+    "url": "https://www.ercot.com/services/rq/Reactive Study Scope.docx",
+    "title": "Reactive Study Scope.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Reactive Study Scope.docx",
+    "local_path": "Resource Integration\\Reactive Study Scope.docx",
+    "original_url": "file://Resource Integration\\Reactive Study Scope.docx"
+  },
+  {
+    "id": 201,
+    "url": "https://www.ercot.com/services/rq/AVR and PSS Test Guidelines for Conventional Generation.docx",
+    "title": "AVR and PSS Test Guidelines for Conventional Generation.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "AVR and PSS Test Guidelines for Conventional Generation.docx",
+    "local_path": "Resource Integration\\AVR and PSS Test Guidelines for Conventional Generation.docx",
+    "original_url": "file://Resource Integration\\AVR and PSS Test Guidelines for Conventional Generation.docx"
+  },
+  {
+    "id": 202,
+    "url": "https://www.ercot.com/services/rq/AVR Test of BESS DGRs 02032021 v2.docx",
+    "title": "AVR Test of BESS DGRs 02032021 v2.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "AVR Test of BESS DGRs 02032021 v2.docx",
+    "local_path": "Resource Integration\\AVR Test of BESS DGRs 02032021 v2.docx",
+    "original_url": "file://Resource Integration\\AVR Test of BESS DGRs 02032021 v2.docx"
+  },
+  {
+    "id": 203,
+    "url": "https://www.ercot.com/services/rq/AVR Testing Expectations for IRR.docx",
+    "title": "AVR Testing Expectations for IRR.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "AVR Testing Expectations for IRR.docx",
+    "local_path": "Resource Integration\\AVR Testing Expectations for IRR.docx",
+    "original_url": "file://Resource Integration\\AVR Testing Expectations for IRR.docx"
+  },
+  {
+    "id": 204,
+    "url": "https://www.ercot.com/services/rq/Battery Request for Information Template.xlsx",
+    "title": "Battery Request for Information Template.xlsx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Battery Request for Information Template.xlsx",
+    "local_path": "Resource Integration\\Battery Request for Information Template.xlsx",
+    "original_url": "file://Resource Integration\\Battery Request for Information Template.xlsx"
+  },
+  {
+    "id": 172,
+    "url": "https://www.ercot.com/services/rq/DAM Proxy Settlement Points.xls",
+    "title": "DAM Proxy Settlement Points.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "DAM Proxy Settlement Points.xls",
+    "local_path": "Credit\\DAM Proxy Settlement Points.xls",
+    "original_url": "file://Credit\\DAM Proxy Settlement Points.xls"
+  },
+  {
+    "id": 173,
+    "url": "https://www.ercot.com/services/rq/Electricity Futures Products Source.pdf",
+    "title": "Electricity Futures Products Source.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Electricity Futures Products Source.pdf",
+    "local_path": "Credit\\Electricity Futures Products Source.pdf",
+    "original_url": "file://Credit\\Electricity Futures Products Source.pdf"
+  },
+  {
+    "id": 174,
+    "url": "https://www.ercot.com/services/rq/Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx",
+    "title": "Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx",
+    "local_path": "Credit\\Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx",
+    "original_url": "file://Credit\\Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx"
+  },
+  {
+    "id": 175,
+    "url": "https://www.ercot.com/services/rq/Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx",
+    "title": "Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx",
+    "local_path": "Credit\\Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx",
+    "original_url": "file://Credit\\Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx"
+  },
+  {
+    "id": 209,
+    "url": "https://www.ercot.com/services/rq/Entering Resource Registration Data in RIOO-IS.docx",
+    "title": "Entering Resource Registration Data in RIOO-IS.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Entering Resource Registration Data in RIOO-IS.docx",
+    "local_path": "Resource Integration\\Entering Resource Registration Data in RIOO-IS.docx",
+    "original_url": "file://Resource Integration\\Entering Resource Registration Data in RIOO-IS.docx"
+  },
+  {
+    "id": 211,
+    "url": "https://www.ercot.com/services/rq/ERCOT SSR Study Scope Guidelines.docx",
+    "title": "ERCOT SSR Study Scope Guidelines.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ERCOT SSR Study Scope Guidelines.docx",
+    "local_path": "Resource Integration\\ERCOT SSR Study Scope Guidelines.docx",
+    "original_url": "file://Resource Integration\\ERCOT SSR Study Scope Guidelines.docx"
+  },
+  {
+    "id": 216,
+    "url": "https://www.ercot.com/services/rq/November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx",
+    "title": "November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx",
+    "local_path": "Resource Integration\\November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx",
+    "original_url": "file://Resource Integration\\November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx"
+  },
+  {
+    "id": 217,
+    "url": "https://www.ercot.com/services/rq/PGRR103 Good Cause Exception Request.docx",
+    "title": "PGRR103 Good Cause Exception Request.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "PGRR103 Good Cause Exception Request.docx",
+    "local_path": "Resource Integration\\PGRR103 Good Cause Exception Request.docx",
+    "original_url": "file://Resource Integration\\PGRR103 Good Cause Exception Request.docx"
+  },
+  {
+    "id": 220,
+    "url": "https://www.ercot.com/services/rq/Resource Interconnection Handbook.docx",
+    "title": "Resource Interconnection Handbook.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Resource Interconnection Handbook.docx",
+    "local_path": "Resource Integration\\Resource Interconnection Handbook.docx",
+    "original_url": "file://Resource Integration\\Resource Interconnection Handbook.docx"
+  },
+  {
+    "id": 221,
+    "url": "https://www.ercot.com/services/rq/Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc",
+    "title": "Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc",
+    "local_path": "Resource Integration\\Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc",
+    "original_url": "file://Resource Integration\\Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc"
+  },
+  {
+    "id": 222,
+    "url": "https://www.ercot.com/services/rq/Self Limiting Facilities In the Interconnection Process.docx",
+    "title": "Self Limiting Facilities In the Interconnection Process.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Self Limiting Facilities In the Interconnection Process.docx",
+    "local_path": "Resource Integration\\Self Limiting Facilities In the Interconnection Process.docx",
+    "original_url": "file://Resource Integration\\Self Limiting Facilities In the Interconnection Process.docx"
+  },
+  {
+    "id": 223,
+    "url": "https://www.ercot.com/services/rq/Standard Generation Interconnection Agreement.doc",
+    "title": "Standard Generation Interconnection Agreement.doc",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Standard Generation Interconnection Agreement.doc",
+    "local_path": "Resource Integration\\Standard Generation Interconnection Agreement.doc",
+    "original_url": "file://Resource Integration\\Standard Generation Interconnection Agreement.doc"
+  },
+  {
+    "id": 225,
+    "url": "https://www.ercot.com/services/rq/Understanding the RIOO Export spreadsheet.xlsx",
+    "title": "Understanding the RIOO Export spreadsheet.xlsx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Understanding the RIOO Export spreadsheet.xlsx",
+    "local_path": "Resource Integration\\Understanding the RIOO Export spreadsheet.xlsx",
+    "original_url": "file://Resource Integration\\Understanding the RIOO Export spreadsheet.xlsx"
+  },
+  {
+    "id": 226,
+    "url": "https://www.ercot.com/services/rq/ELSE Identification and Meter Point Registration Form.xls",
+    "title": "ELSE Identification and Meter Point Registration Form.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "ELSE Identification and Meter Point Registration Form.xls",
+    "local_path": "Transmission\\Distribution Service Providers\\ELSE Identification and Meter Point Registration Form.xls",
+    "original_url": "file://Transmission\\Distribution Service Providers\\ELSE Identification and Meter Point Registration Form.xls"
+  },
+  {
+    "id": 227,
+    "url": "https://www.ercot.com/services/rq/NOIE Identification and Meter Point Registration Form.xls",
+    "title": "NOIE Identification and Meter Point Registration Form.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "NOIE Identification and Meter Point Registration Form.xls",
+    "local_path": "Transmission\\Distribution Service Providers\\NOIE Identification and Meter Point Registration Form.xls",
+    "original_url": "file://Transmission\\Distribution Service Providers\\NOIE Identification and Meter Point Registration Form.xls"
+  },
+  {
+    "id": 228,
+    "url": "https://www.ercot.com/services/rq/Settlement Block Load Transfer Registration Form.xls",
+    "title": "Settlement Block Load Transfer Registration Form.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Settlement Block Load Transfer Registration Form.xls",
+    "local_path": "Transmission\\Distribution Service Providers\\Settlement Block Load Transfer Registration Form.xls",
+    "original_url": "file://Transmission\\Distribution Service Providers\\Settlement Block Load Transfer Registration Form.xls"
+  },
+  {
+    "id": 229,
+    "url": "https://www.ercot.com/services/rq/TDSP Confidentiality Agreement List.xlsx",
+    "title": "TDSP Confidentiality Agreement List.xlsx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "TDSP Confidentiality Agreement List.xlsx",
+    "local_path": "Transmission\\Distribution Service Providers\\TDSP Confidentiality Agreement List.xlsx",
+    "original_url": "file://Transmission\\Distribution Service Providers\\TDSP Confidentiality Agreement List.xlsx"
+  },
+  {
+    "id": 230,
+    "url": "https://www.ercot.com/services/rq/TDSP Read Generation Metering Registration Form.xlsx",
+    "title": "TDSP Read Generation Metering Registration Form.xlsx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "TDSP Read Generation Metering Registration Form.xlsx",
+    "local_path": "Transmission\\Distribution Service Providers\\TDSP Read Generation Metering Registration Form.xlsx",
+    "original_url": "file://Transmission\\Distribution Service Providers\\TDSP Read Generation Metering Registration Form.xlsx"
+  },
+  {
+    "id": 231,
+    "url": "https://www.ercot.com/services/rq/Transmission Operator Designation or Termination Form.docx",
+    "title": "Transmission Operator Designation or Termination Form.docx",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "Transmission Operator Designation or Termination Form.docx",
+    "local_path": "Transmission\\Distribution Service Providers\\Transmission Operator Designation or Termination Form.docx",
+    "original_url": "file://Transmission\\Distribution Service Providers\\Transmission Operator Designation or Termination Form.docx"
+  },
+  {
+    "id": 232,
+    "url": "https://www.ercot.com/services/rq/TSP Block Load Transfer Registration Form.xls",
+    "title": "TSP Block Load Transfer Registration Form.xls",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "TSP Block Load Transfer Registration Form.xls",
+    "local_path": "Transmission\\Distribution Service Providers\\TSP Block Load Transfer Registration Form.xls",
+    "original_url": "file://Transmission\\Distribution Service Providers\\TSP Block Load Transfer Registration Form.xls"
+  },
+  {
+    "id": 224,
+    "url": "https://www.ercot.com/services/rq/TSPDSP Sign Up Guide.pdf_v1",
+    "title": "TSPDSP Sign Up Guide.pdf",
+    "content_type": "document",
+    "created_at": "2024-12-31T18:32:11.702865",
+    "file_name": "TSPDSP Sign Up Guide.pdf",
+    "local_path": "Resource Integration\\TSPDSP Sign Up Guide.pdf",
+    "original_url": "file://Resource Integration\\TSPDSP Sign Up Guide.pdf"
+  }
+]

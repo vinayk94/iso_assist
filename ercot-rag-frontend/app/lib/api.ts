@@ -4,6 +4,7 @@ import type { RAGResponse } from './types';
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function queryRAG(query: string): Promise<RAGResponse> {
+    console.log("Sending query:", query);  
     const response = await fetch(`${API_URL}/api/query`, {
         method: 'POST',
         headers: {
@@ -17,6 +18,7 @@ export async function queryRAG(query: string): Promise<RAGResponse> {
     }
 
     const data = await response.json();
+    console.log("API response:", data); 
     return data;
 }
 

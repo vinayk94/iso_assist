@@ -1,0 +1,132 @@
+doc_id,url,title,content_type,file_name,chunks,embeddings,has_chunks,has_embeddings,complete
+1,https://www.ercot.com/services/rq,Registration and Qualification,web,,1,1,True,True,True
+2,https://www.ercot.com/services/rq/crr,Congestion Revenue Rights Account Holder,web,,1,1,True,True,True
+3,https://www.ercot.com/services/rq/integration,Resource Integration,web,,1,1,True,True,True
+4,https://www.ercot.com/services/rq/imre,Independent Market Information System Registered Entity,web,,1,1,True,True,True
+5,https://www.ercot.com/services/rq/tdsp,Transmission/Distribution Service Providers,web,,1,1,True,True,True
+6,https://www.ercot.com/services/rq/qse,Qualified Scheduling Entities,web,,1,1,True,True,True
+7,https://www.ercot.com/services/rq/re/dgresource/,Distributed Generation,web,,1,1,True,True,True
+8,https://www.ercot.com/services/rq/re/dgresource,Distributed Generation,web,,1,1,True,True,True
+9,https://www.ercot.com/services/rq/lse,Load Serving Entities,web,,1,1,True,True,True
+10,https://www.ercot.com/services/rq/re,Resource Entities,web,,1,1,True,True,True
+11,https://www.ercot.com/services/rq/credit,Credit,web,,1,1,True,True,True
+12,https://www.ercot.com/services/rq/lse/trt/index.html,Texas Retail Market Testing,web,,1,1,True,True,True
+13,https://www.ercot.com/services/rq/lse/index,Load Serving Entities,web,,1,1,True,True,True
+14,https://www.ercot.com/services/rq/re/newqserep-steps,Generation Resources - Steps to Establish New QSE Relationship,web,,1,1,True,True,True
+15,https://www.ercot.com/services/rq/lse/tfi,Retail Market Test Flight Information,web,,1,1,True,True,True
+16,https://www.ercot.com/services/rq/lse/trt/index,Texas Retail Market Testing,web,,1,1,True,True,True
+17,https://www.ercot.com/services/rq/lse/tfi/index,Retail Market Test Flight Information,web,,1,1,True,True,True
+35,https://www.ercot.com/files/docs/2016/12/14/CP_Credit_Application.docx,Credit Application,document,,0,0,False,False,False
+36,https://www.ercot.com/files/docs/2021/11/19/FCE_Calculations_ProxySP_Input.xls,DAM Proxy Settlement Points,document,,0,0,False,False,False
+37,https://www.ercot.com/files/docs/2018/08/30/Electricity_Futures_Products_Source.pdf,Electricity Futures Products Source,document,,0,0,False,False,False
+38,https://www.ercot.com/files/docs/2023/09/01/Letter%20of%20Credit%202023.docx,Letter of Credit,document,,0,0,False,False,False
+39,https://www.ercot.com/files/docs/2023/09/01/Surety%20Bond%202023.docx,Surety Bond,document,,0,0,False,False,False
+40,https://www.ercot.com/files/docs/2021/12/10/TEMSFM_Standard_Letter_of_Credit.docx,"Letter of Credit for Securitization Default Charges Under PURA Chapter 39, Subchapter M",document,,0,0,False,False,False
+41,https://www.ercot.com/files/docs/2022/05/13/TEMSFN_Standard_Letter_of_Credit.docx,"Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39, Subchapter N",document,,0,0,False,False,False
+42,https://www.ercot.com/files/docs/2009/12/03/noie_load_zone_establishment_form_20071001.xls,NOIE Load Zone Establishment Form,document,,0,0,False,False,False
+43,https://www.ercot.com/files/docs/2010/12/10/ercot_nodal_market_guide_v3.0.doc,Market Guide,document,,0,0,False,False,False
+44,https://www.ercot.com/files/docs/2019/05/31/Application_for_Registration_-_Data_Agent-Only_QSE.docx,Application for Registration  - Data Agent - Only QSE,document,,0,0,False,False,False
+45,https://www.ercot.com/files/docs/2015/06/10/annual_certification_form_to_meet_ercot_additional_minimum_p.doc,Annual Certification Form to Meet ERCOT Additional Minimum Parti,document,,0,0,False,False,False
+46,https://www.ercot.com/files/docs/2016/08/02/Declaration_of_Subordinate_QSEs.docx,Declaration of Subordinate QSEs,document,,0,0,False,False,False
+47,https://www.ercot.com/files/docs/2011/01/07/iccp_interim_update_request_v1.0.doc,ICCP Interim Update Request v1.0,document,,0,0,False,False,False
+48,https://www.ercot.com/files/docs/2022/01/25/ERCOT_QSE_Qualification_Guide_110123.docx,QSE Qualification Guide,document,,0,0,False,False,False
+49,https://www.ercot.com/files/docs/2022/02/10/ERCOT_Nodal_ICCP_Communications_Handbook.docx,ERCOT Nodal ICCP Communications Handbook v3.22,document,,0,0,False,False,False
+50,https://www.ercot.com/files/docs/2024/05/31/ERCOT_Nodal_ICCP_Communications_Handbook_V4.01.docx,ERCOT Nodal ICCP Communications Handbook RTC+B v4.01,document,,0,0,False,False,False
+51,https://www.ercot.com/files/docs/2022/01/14/IE-SignUp-Guide-for-RIOO-Services.pdf,IE Sign Up Guide,document,,0,0,False,False,False
+52,https://www.ercot.com/files/docs/2022/01/14/RE-SignUp-Guide-for-RIOO-Services.pdf,RE Sign Up Guide,document,,0,0,False,False,False
+53,https://www.ercot.com/files/docs/2022/01/14/TSP-Sign-Up-for-RIOO-Services.pdf,TSP/DSP Sign Up Guide,document,,0,0,False,False,False
+54,https://www.ercot.com/files/docs/2022/01/14/Managing-Your-RIOO-Services-User-Account.pdf,Managing Your RIOO Services User Account,document,,0,0,False,False,False
+55,https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-a-Resource-Smaller-than-10MW.pdf,Creating an INR for a Generation Resource Under 10MW,document,,0,0,False,False,False
+56,https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-Resource-Larger-than-10MW.pdf,Creating an INR for a Generation Resource Over 10MW,document,,0,0,False,False,False
+57,https://www.ercot.com/files/docs/2022/01/14/Managing-Your-INR-as-an-IE-or-RE.pdf,Managing Your INR as an IE or RE,document,,0,0,False,False,False
+58,https://www.ercot.com/files/docs/2022/01/14/Managing-INRs-as-a-TSP-or-DSP.pdf,Managing INRs as a TSP/DSP,document,,0,0,False,False,False
+59,https://www.ercot.com/files/docs/2018/12/10/commissioningPlanTemplate.xls,Commissioning Plan Template,document,,0,0,False,False,False
+60,https://www.ercot.com/files/docs/2021/05/12/Generation_Resource_Splitting_Agreement_rev_051121.docx,Generation Resource Splitting Agreement,document,,0,0,False,False,False
+61,https://www.ercot.com/files/docs/2018/12/10/RE_Model_Interim_Update_Request_V1.1.doc,Network Model Interim Update Request,document,,0,0,False,False,False
+62,https://www.ercot.com/files/docs/2018/12/10/MOUandEC_Opt-In_Checklist.doc,MOU and EC Opt-In Checklist,document,,0,0,False,False,False
+63,https://www.ercot.com/files/docs/2022/02/22/ERCOT_New_Generator_Commissioning_Checklist.docx,ERCOT New Generator Commissioning Checklist,document,,0,0,False,False,False
+64,https://www.ercot.com/files/docs/2019/09/30/DGR_Conditions_Document_9.26.19.docx,DGR Conditions,document,,0,0,False,False,False
+68,https://www.ercot.com/files/docs/2021/03/30/Self-Limiting_Facilities_In_the_Interconnection_Process_v1_3c.docx,Self Limiting Facilities In the Interconnection Process,document,,0,0,False,False,False
+69,https://www.ercot.com/files/docs/2021/01/07/Resource_Interconnection_Handbook_v1.94_03012023.docx,Resource Interconnection Handbook,document,,0,0,False,False,False
+76,https://www.ercot.com/files/docs/2023/11/20/Nov_2023_Changes_to_RIOO_IS.docx,November 2023 Changes to RIOO-IS – Self Limiting Facilities and POIB,document,,0,0,False,False,False
+77,https://www.ercot.com/files/docs/2023/01/04/RIOO%20Processes%20with%20RIOO-Create.docx,Entering Resource Registration Data in RIOO-IS,document,,0,0,False,False,False
+78,https://www.ercot.com/files/docs/2023/05/15/RIOO_IS_Export_data_help_post.xlsx,Understanding the RIOO Export spreadsheet,document,,0,0,False,False,False
+81,https://www.ercot.com/files/docs/2021/02/09/Battery_RFI_Template_03182024.xlsx,Battery Request for Information Template,document,,0,0,False,False,False
+82,https://www.ercot.com/files/docs/2020/12/04/ERCOT_SSR_Study_Scope_Guideline_10-27-2020-external.docx,ERCOT SSR Study Scope Guidelines,document,,0,0,False,False,False
+83,https://www.ercot.com/files/docs/2020/04/15/Reactive_Study_Guide_v10_April2020.docx,Reactive Study Scope,document,,0,0,False,False,False
+84,https://www.ercot.com/files/docs/2019/09/13/SGIA.doc,Standard Generation Interconnection Agreement,document,,0,0,False,False,False
+85,https://www.ercot.com/files/docs/2021/02/09/AVR_Test_of_BESS_DGRs_02032021_v2.docx,AVR Test of BESS DGRs 02032021 v2,document,,0,0,False,False,False
+86,https://www.ercot.com/files/docs/2020/12/30/IRR_AVR_testing_expectations_12302020.docx,AVR Testing Expectations for IRR,document,,0,0,False,False,False
+87,https://www.ercot.com/files/docs/2020/12/30/ERCOT_AVR_PSS_Test_Guideline_for_Conventional_Generators_v1.0.docx,AVR and PSS Test Guidelines for Conventional Generation,document,,0,0,False,False,False
+88,https://www.ercot.com/files/docs/2021/09/15/Combined_AVR_Template_1.21.xlsx,Combined AVR Template 1.21,document,,0,0,False,False,False
+91,https://www.ercot.com/files/docs/2022/04/01/08D-040122.doc,Section 8 Attachment D:  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act,document,,0,0,False,False,False
+92,https://www.ercot.com/files/docs/2023/10/17/Exception_Request_12282023.docx,PGRR103 Good Cause Exception Request,document,,0,0,False,False,False
+96,https://www.ercot.com/files/docs/2016/02/04/else_identification_and_meter_points_registration_form_ver2.xls,ELSE Identification and Meter Point Registration Form,document,,0,0,False,False,False
+97,https://www.ercot.com/files/docs/2008/08/12/noie_registration_meter_and_points_form_ver_9.1.xls,NOIE Identification and Meter Point Registration Form,document,,0,0,False,False,False
+98,https://www.ercot.com/files/docs/2011/09/01/settlement_blt_registration_form_rev_4.xls,Settlement Block Load Transfer Registration Form,document,,0,0,False,False,False
+99,https://www.ercot.com/files/docs/2021/06/02/TDSP-CAs.xlsx,TDSP Confidentiality Agreement List,document,,0,0,False,False,False
+100,https://www.ercot.com/files/docs/2020/08/26/ERCOT_TDSPReadGeneration_Form_v6.1.xlsx,TDSP Read Generation Metering Registration Form,document,,0,0,False,False,False
+101,https://www.ercot.com/files/docs/2012/05/10/tsp_blt_registration_form_rev_5.xls,TSP Block Load Transfer Registration Form,document,,0,0,False,False,False
+102,https://www.ercot.com/files/docs/2021/05/04/Transmission-Operator-Designation-or-Termination-Form.docx,Transmission Operator Designation or Termination Form,document,,0,0,False,False,False
+171,https://www.ercot.com/services/rq/Credit Application.docx,Credit Application.docx,document,Credit Application.docx,7,7,True,True,True
+172,https://www.ercot.com/services/rq/DAM Proxy Settlement Points.xls,DAM Proxy Settlement Points.xls,document,DAM Proxy Settlement Points.xls,93,93,True,True,True
+173,https://www.ercot.com/services/rq/Electricity Futures Products Source.pdf,Electricity Futures Products Source.pdf,document,Electricity Futures Products Source.pdf,1,1,True,True,True
+174,https://www.ercot.com/services/rq/Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx,Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx,document,Letter of Credit for Securitization Default Charges Under PURA Chapter 39 Subchapter M.docx,48,48,True,True,True
+175,https://www.ercot.com/services/rq/Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx,Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx,document,Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39 Subchapter N.docx,48,48,True,True,True
+176,https://www.ercot.com/services/rq/Letter of Credit.docx,Letter of Credit.docx,document,Letter of Credit.docx,46,46,True,True,True
+177,https://www.ercot.com/services/rq/Surety Bond.docx,Surety Bond.docx,document,Surety Bond.docx,127,127,True,True,True
+178,https://www.ercot.com/services/rq/NOIE Load Zone Establishment Form.xls,NOIE Load Zone Establishment Form.xls,document,NOIE Load Zone Establishment Form.xls,2,2,True,True,True
+179,https://www.ercot.com/services/rq/Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc,Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc,document,Annual Certification Form to Meet ERCOT Additional Minimum Parti.doc,0,0,False,False,False
+180,https://www.ercot.com/services/rq/Application for Registration  - Data Agent - Only QSE.docx,Application for Registration  - Data Agent - Only QSE.docx,document,Application for Registration  - Data Agent - Only QSE.docx,20,20,True,True,True
+181,https://www.ercot.com/services/rq/Declaration of Subordinate QSEs.docx,Declaration of Subordinate QSEs.docx,document,Declaration of Subordinate QSEs.docx,4,4,True,True,True
+182,https://www.ercot.com/services/rq/ICCP Interim Update Request v1.0.doc,ICCP Interim Update Request v1.0.doc,document,ICCP Interim Update Request v1.0.doc,0,0,False,False,False
+183,https://www.ercot.com/services/rq/Market Guide.doc,Market Guide.doc,document,Market Guide.doc,0,0,False,False,False
+184,https://www.ercot.com/services/rq/QSE Qualification Guide.docx,QSE Qualification Guide.docx,document,QSE Qualification Guide.docx,16,16,True,True,True
+185,https://www.ercot.com/services/rq/Commissioning Plan Template.xls,Commissioning Plan Template.xls,document,Commissioning Plan Template.xls,369,369,True,True,True
+186,https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Over 10MW.pdf,Creating an INR for a Generation Resource Over 10MW.pdf,document,Creating an INR for a Generation Resource Over 10MW.pdf,74,74,True,True,True
+187,https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Under 10MW.pdf,Creating an INR for a Generation Resource Under 10MW.pdf,document,Creating an INR for a Generation Resource Under 10MW.pdf,65,65,True,True,True
+188,https://www.ercot.com/services/rq/DGR Conditions.docx,DGR Conditions.docx,document,DGR Conditions.docx,21,21,True,True,True
+189,https://www.ercot.com/services/rq/ERCOT New Generator Commissioning Checklist.docx,ERCOT New Generator Commissioning Checklist.docx,document,ERCOT New Generator Commissioning Checklist.docx,118,118,True,True,True
+190,https://www.ercot.com/services/rq/ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx,ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx,document,ERCOT Nodal ICCP Communications Handbook RTCB v4.01.docx,422,422,True,True,True
+191,https://www.ercot.com/services/rq/ERCOT Nodal ICCP Communications Handbook v3.22.docx,ERCOT Nodal ICCP Communications Handbook v3.22.docx,document,ERCOT Nodal ICCP Communications Handbook v3.22.docx,437,437,True,True,True
+192,https://www.ercot.com/services/rq/Generation Resource Splitting Agreement.docx,Generation Resource Splitting Agreement.docx,document,Generation Resource Splitting Agreement.docx,12,12,True,True,True
+193,https://www.ercot.com/services/rq/IE Sign Up Guide.pdf,IE Sign Up Guide.pdf,document,IE Sign Up Guide.pdf,40,40,True,True,True
+194,https://www.ercot.com/services/rq/Managing INRs as a TSPDSP.pdf,Managing INRs as a TSPDSP.pdf,document,Managing INRs as a TSPDSP.pdf,133,133,True,True,True
+195,https://www.ercot.com/services/rq/Managing Your INR as an IE or RE.pdf,Managing Your INR as an IE or RE.pdf,document,Managing Your INR as an IE or RE.pdf,108,108,True,True,True
+196,https://www.ercot.com/services/rq/Managing Your RIOO Services User Account.pdf,Managing Your RIOO Services User Account.pdf,document,Managing Your RIOO Services User Account.pdf,25,25,True,True,True
+197,https://www.ercot.com/services/rq/MOU and EC Opt-In Checklist.doc,MOU and EC Opt-In Checklist.doc,document,MOU and EC Opt-In Checklist.doc,0,0,False,False,False
+198,https://www.ercot.com/services/rq/Network Model Interim Update Request.doc,Network Model Interim Update Request.doc,document,Network Model Interim Update Request.doc,0,0,False,False,False
+199,https://www.ercot.com/services/rq/RE Sign Up Guide.pdf,RE Sign Up Guide.pdf,document,RE Sign Up Guide.pdf,39,39,True,True,True
+200,https://www.ercot.com/services/rq/TSPDSP Sign Up Guide.pdf,TSPDSP Sign Up Guide.pdf,document,TSPDSP Sign Up Guide.pdf,38,38,True,True,True
+201,https://www.ercot.com/services/rq/AVR and PSS Test Guidelines for Conventional Generation.docx,AVR and PSS Test Guidelines for Conventional Generation.docx,document,AVR and PSS Test Guidelines for Conventional Generation.docx,25,25,True,True,True
+202,https://www.ercot.com/services/rq/AVR Test of BESS DGRs 02032021 v2.docx,AVR Test of BESS DGRs 02032021 v2.docx,document,AVR Test of BESS DGRs 02032021 v2.docx,7,7,True,True,True
+203,https://www.ercot.com/services/rq/AVR Testing Expectations for IRR.docx,AVR Testing Expectations for IRR.docx,document,AVR Testing Expectations for IRR.docx,18,18,True,True,True
+204,https://www.ercot.com/services/rq/Battery Request for Information Template.xlsx,Battery Request for Information Template.xlsx,document,Battery Request for Information Template.xlsx,21,21,True,True,True
+205,https://www.ercot.com/services/rq/Combined AVR Template 1.21.xlsx,Combined AVR Template 1.21.xlsx,document,Combined AVR Template 1.21.xlsx,40,40,True,True,True
+206,https://www.ercot.com/services/rq/Commissioning Plan Template.xls?v=20250103,Commissioning Plan Template.xls,document,Commissioning Plan Template.xls,369,369,True,True,True
+207,https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Over 10MW.pdf?v=20250103,Creating an INR for a Generation Resource Over 10MW.pdf,document,Creating an INR for a Generation Resource Over 10MW.pdf,74,74,True,True,True
+208,https://www.ercot.com/services/rq/Creating an INR for a Generation Resource Under 10MW.pdf?v=20250103,Creating an INR for a Generation Resource Under 10MW.pdf,document,Creating an INR for a Generation Resource Under 10MW.pdf,65,65,True,True,True
+209,https://www.ercot.com/services/rq/Entering Resource Registration Data in RIOO-IS.docx,Entering Resource Registration Data in RIOO-IS.docx,document,Entering Resource Registration Data in RIOO-IS.docx,43,43,True,True,True
+210,https://www.ercot.com/services/rq/ERCOT New Generator Commissioning Checklist.docx?v=20250103,ERCOT New Generator Commissioning Checklist.docx,document,ERCOT New Generator Commissioning Checklist.docx,118,118,True,True,True
+211,https://www.ercot.com/services/rq/ERCOT SSR Study Scope Guidelines.docx,ERCOT SSR Study Scope Guidelines.docx,document,ERCOT SSR Study Scope Guidelines.docx,23,23,True,True,True
+212,https://www.ercot.com/services/rq/IE Sign Up Guide.pdf?v=20250103,IE Sign Up Guide.pdf,document,IE Sign Up Guide.pdf,40,40,True,True,True
+213,https://www.ercot.com/services/rq/Managing INRs as a TSPDSP.pdf?v=20250103,Managing INRs as a TSPDSP.pdf,document,Managing INRs as a TSPDSP.pdf,133,133,True,True,True
+214,https://www.ercot.com/services/rq/Managing Your INR as an IE or RE.pdf?v=20250103,Managing Your INR as an IE or RE.pdf,document,Managing Your INR as an IE or RE.pdf,108,108,True,True,True
+215,https://www.ercot.com/services/rq/Managing Your RIOO Services User Account.pdf?v=20250103,Managing Your RIOO Services User Account.pdf,document,Managing Your RIOO Services User Account.pdf,25,25,True,True,True
+216,https://www.ercot.com/services/rq/November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx,November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx,document,November 2023 Changes to RIOO-IS  Self Limiting Facilities and POIB.docx,4,4,True,True,True
+217,https://www.ercot.com/services/rq/PGRR103 Good Cause Exception Request.docx,PGRR103 Good Cause Exception Request.docx,document,PGRR103 Good Cause Exception Request.docx,2,2,True,True,True
+218,https://www.ercot.com/services/rq/RE Sign Up Guide.pdf?v=20250103,RE Sign Up Guide.pdf,document,RE Sign Up Guide.pdf,39,39,True,True,True
+219,https://www.ercot.com/services/rq/Reactive Study Scope.docx,Reactive Study Scope.docx,document,Reactive Study Scope.docx,39,39,True,True,True
+220,https://www.ercot.com/services/rq/Resource Interconnection Handbook.docx,Resource Interconnection Handbook.docx,document,Resource Interconnection Handbook.docx,305,305,True,True,True
+221,https://www.ercot.com/services/rq/Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc,Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc,document,Section 8 Attachment D  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act.doc,0,0,False,False,False
+222,https://www.ercot.com/services/rq/Self Limiting Facilities In the Interconnection Process.docx,Self Limiting Facilities In the Interconnection Process.docx,document,Self Limiting Facilities In the Interconnection Process.docx,48,48,True,True,True
+223,https://www.ercot.com/services/rq/Standard Generation Interconnection Agreement.doc,Standard Generation Interconnection Agreement.doc,document,Standard Generation Interconnection Agreement.doc,0,0,False,False,False
+224,https://www.ercot.com/services/rq/TSPDSP Sign Up Guide.pdf?v=20250103,TSPDSP Sign Up Guide.pdf,document,TSPDSP Sign Up Guide.pdf,38,38,True,True,True
+225,https://www.ercot.com/services/rq/Understanding the RIOO Export spreadsheet.xlsx,Understanding the RIOO Export spreadsheet.xlsx,document,Understanding the RIOO Export spreadsheet.xlsx,391,391,True,True,True
+226,https://www.ercot.com/services/rq/ELSE Identification and Meter Point Registration Form.xls,ELSE Identification and Meter Point Registration Form.xls,document,ELSE Identification and Meter Point Registration Form.xls,954,954,True,True,True
+227,https://www.ercot.com/services/rq/NOIE Identification and Meter Point Registration Form.xls,NOIE Identification and Meter Point Registration Form.xls,document,NOIE Identification and Meter Point Registration Form.xls,716,716,True,True,True
+228,https://www.ercot.com/services/rq/Settlement Block Load Transfer Registration Form.xls,Settlement Block Load Transfer Registration Form.xls,document,Settlement Block Load Transfer Registration Form.xls,462,462,True,True,True
+229,https://www.ercot.com/services/rq/TDSP Confidentiality Agreement List.xlsx,TDSP Confidentiality Agreement List.xlsx,document,TDSP Confidentiality Agreement List.xlsx,15,15,True,True,True
+230,https://www.ercot.com/services/rq/TDSP Read Generation Metering Registration Form.xlsx,TDSP Read Generation Metering Registration Form.xlsx,document,TDSP Read Generation Metering Registration Form.xlsx,325,325,True,True,True
+231,https://www.ercot.com/services/rq/Transmission Operator Designation or Termination Form.docx,Transmission Operator Designation or Termination Form.docx,document,Transmission Operator Designation or Termination Form.docx,13,13,True,True,True
+232,https://www.ercot.com/services/rq/TSP Block Load Transfer Registration Form.xls,TSP Block Load Transfer Registration Form.xls,document,TSP Block Load Transfer Registration Form.xls,0,0,False,False,False

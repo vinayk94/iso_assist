@@ -1,0 +1,318 @@
+
+Document URLs in database:
+--------------------------------------------------
+
+Title: Annual Certification Form to Meet ERCOT Additional Minimum Parti
+Current URL: https://www.ercot.com/files/docs/2015/06/10/annual_certification_form_to_meet_ercot_additional_minimum_p.doc
+Filename: None
+Status: 200
+
+Title: Application for Registration  - Data Agent - Only QSE
+Current URL: https://www.ercot.com/files/docs/2019/05/31/Application_for_Registration_-_Data_Agent-Only_QSE.docx
+Filename: None
+Status: 200
+
+Title: AVR and PSS Test Guidelines for Conventional Generation
+Current URL: https://www.ercot.com/files/docs/2020/12/30/ERCOT_AVR_PSS_Test_Guideline_for_Conventional_Generators_v1.0.docx
+Filename: None
+Status: 200
+
+Title: AVR Testing Expectations for IRR
+Current URL: https://www.ercot.com/files/docs/2020/12/30/IRR_AVR_testing_expectations_12302020.docx
+Filename: None
+Status: 200
+
+Title: AVR Test of BESS DGRs 02032021 v2
+Current URL: https://www.ercot.com/files/docs/2021/02/09/AVR_Test_of_BESS_DGRs_02032021_v2.docx
+Filename: None
+Status: 200
+
+Title: Battery Request for Information Template
+Current URL: https://www.ercot.com/files/docs/2021/02/09/Battery_RFI_Template_03182024.xlsx
+Filename: None
+Status: 200
+
+Title: Combined AVR Template 1.21
+Current URL: https://www.ercot.com/files/docs/2021/09/15/Combined_AVR_Template_1.21.xlsx
+Filename: None
+Status: 200
+
+Title: Commissioning Plan Template
+Current URL: https://www.ercot.com/files/docs/2018/12/10/commissioningPlanTemplate.xls
+Filename: None
+Status: 200
+
+Title: Creating an INR for a Generation Resource Over 10MW
+Current URL: https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-Resource-Larger-than-10MW.pdf
+Filename: None
+Status: 200
+
+Title: Creating an INR for a Generation Resource Under 10MW
+Current URL: https://www.ercot.com/files/docs/2022/01/14/Creating-an-INR-for-a-Resource-Smaller-than-10MW.pdf
+Filename: None
+Status: 200
+
+Title: Credit Application
+Current URL: https://www.ercot.com/files/docs/2016/12/14/CP_Credit_Application.docx
+Filename: None
+Status: 200
+
+Title: DAM Proxy Settlement Points
+Current URL: https://www.ercot.com/files/docs/2021/11/19/FCE_Calculations_ProxySP_Input.xls
+Filename: None
+Status: 200
+
+Title: Declaration of Subordinate QSEs
+Current URL: https://www.ercot.com/files/docs/2016/08/02/Declaration_of_Subordinate_QSEs.docx
+Filename: None
+Status: 200
+
+Title: DGR Conditions
+Current URL: https://www.ercot.com/files/docs/2019/09/30/DGR_Conditions_Document_9.26.19.docx
+Filename: None
+Status: 200
+
+Title: Electricity Futures Products Source
+Current URL: https://www.ercot.com/files/docs/2018/08/30/Electricity_Futures_Products_Source.pdf
+Filename: None
+Status: 200
+
+Title: ELSE Identification and Meter Point Registration Form
+Current URL: https://www.ercot.com/files/docs/2016/02/04/else_identification_and_meter_points_registration_form_ver2.xls
+Filename: None
+Status: 200
+
+Title: Entering Resource Registration Data in RIOO-IS
+Current URL: https://www.ercot.com/files/docs/2023/01/04/RIOO%20Processes%20with%20RIOO-Create.docx
+Filename: None
+Status: 200
+
+Title: ERCOT New Generator Commissioning Checklist
+Current URL: https://www.ercot.com/files/docs/2022/02/22/ERCOT_New_Generator_Commissioning_Checklist.docx
+Filename: None
+Status: 200
+
+Title: ERCOT Nodal ICCP Communications Handbook RTC+B v4.01
+Current URL: https://www.ercot.com/files/docs/2024/05/31/ERCOT_Nodal_ICCP_Communications_Handbook_V4.01.docx
+Filename: None
+Status: 200
+
+Title: ERCOT Nodal ICCP Communications Handbook v3.22
+Current URL: https://www.ercot.com/files/docs/2022/02/10/ERCOT_Nodal_ICCP_Communications_Handbook.docx
+Filename: None
+Status: 200
+
+Title: ERCOT SSR Study Scope Guidelines
+Current URL: https://www.ercot.com/files/docs/2020/12/04/ERCOT_SSR_Study_Scope_Guideline_10-27-2020-external.docx
+Filename: None
+Status: 200
+
+Title: Generation Resource Splitting Agreement
+Current URL: https://www.ercot.com/files/docs/2021/05/12/Generation_Resource_Splitting_Agreement_rev_051121.docx
+Filename: None
+Status: 200
+
+Title: ICCP Interim Update Request v1.0
+Current URL: https://www.ercot.com/files/docs/2011/01/07/iccp_interim_update_request_v1.0.doc
+Filename: None
+Status: 200
+
+Title: IE Sign Up Guide
+Current URL: https://www.ercot.com/files/docs/2022/01/14/IE-SignUp-Guide-for-RIOO-Services.pdf
+Filename: None
+Status: 200
+
+Title: Letter of Credit
+Current URL: https://www.ercot.com/files/docs/2023/09/01/Letter%20of%20Credit%202023.docx
+Filename: None
+Status: 200
+
+Title: Letter of Credit for Securitization Default Charges Under PURA Chapter 39, Subchapter M
+Current URL: https://www.ercot.com/files/docs/2021/12/10/TEMSFM_Standard_Letter_of_Credit.docx
+Filename: None
+Status: 200
+
+Title: Letter of Credit for Securitization Uplift Charges Under PURA Chapter 39, Subchapter N
+Current URL: https://www.ercot.com/files/docs/2022/05/13/TEMSFN_Standard_Letter_of_Credit.docx
+Filename: None
+Status: 200
+
+Title: Managing INRs as a TSP/DSP
+Current URL: https://www.ercot.com/files/docs/2022/01/14/Managing-INRs-as-a-TSP-or-DSP.pdf
+Filename: None
+Status: 200
+
+Title: Managing Your INR as an IE or RE
+Current URL: https://www.ercot.com/files/docs/2022/01/14/Managing-Your-INR-as-an-IE-or-RE.pdf
+Filename: None
+Status: 200
+
+Title: Managing Your RIOO Services User Account
+Current URL: https://www.ercot.com/files/docs/2022/01/14/Managing-Your-RIOO-Services-User-Account.pdf
+Filename: None
+Status: 200
+
+Title: Market Guide
+Current URL: https://www.ercot.com/files/docs/2010/12/10/ercot_nodal_market_guide_v3.0.doc
+Filename: None
+Status: 200
+
+Title: MOU and EC Opt-In Checklist
+Current URL: https://www.ercot.com/files/docs/2018/12/10/MOUandEC_Opt-In_Checklist.doc
+Filename: None
+Status: 200
+
+Title: Network Model Interim Update Request
+Current URL: https://www.ercot.com/files/docs/2018/12/10/RE_Model_Interim_Update_Request_V1.1.doc
+Filename: None
+Status: 200
+
+Title: NOIE Identification and Meter Point Registration Form
+Current URL: https://www.ercot.com/files/docs/2008/08/12/noie_registration_meter_and_points_form_ver_9.1.xls
+Filename: None
+Status: 200
+
+Title: NOIE Load Zone Establishment Form
+Current URL: https://www.ercot.com/files/docs/2009/12/03/noie_load_zone_establishment_form_20071001.xls
+Filename: None
+Status: 200
+
+Title: November 2023 Changes to RIOO-IS – Self Limiting Facilities and POIB
+Current URL: https://www.ercot.com/files/docs/2023/11/20/Nov_2023_Changes_to_RIOO_IS.docx
+Filename: None
+Status: 200
+
+Title: PGRR103 Good Cause Exception Request
+Current URL: https://www.ercot.com/files/docs/2023/10/17/Exception_Request_12282023.docx
+Filename: None
+Status: 200
+
+Title: QSE Qualification Guide
+Current URL: https://www.ercot.com/files/docs/2022/01/25/ERCOT_QSE_Qualification_Guide_110123.docx
+Filename: None
+Status: 200
+
+Title: Reactive Study Scope
+Current URL: https://www.ercot.com/files/docs/2020/04/15/Reactive_Study_Guide_v10_April2020.docx
+Filename: None
+Status: 200
+
+Title: RE Sign Up Guide
+Current URL: https://www.ercot.com/files/docs/2022/01/14/RE-SignUp-Guide-for-RIOO-Services.pdf
+Filename: None
+Status: 200
+
+Title: Resource Interconnection Handbook
+Current URL: https://www.ercot.com/files/docs/2021/01/07/Resource_Interconnection_Handbook_v1.94_03012023.docx
+Filename: None
+Status: 200
+
+Title: Section 8 Attachment D:  Attestation Regarding Compliance with the Lone Star Infrastructure Protection Act
+Current URL: https://www.ercot.com/files/docs/2022/04/01/08D-040122.doc
+Filename: None
+Status: 200
+
+Title: Self Limiting Facilities In the Interconnection Process
+Current URL: https://www.ercot.com/files/docs/2021/03/30/Self-Limiting_Facilities_In_the_Interconnection_Process_v1_3c.docx
+Filename: None
+Status: 200
+
+Title: Settlement Block Load Transfer Registration Form
+Current URL: https://www.ercot.com/files/docs/2011/09/01/settlement_blt_registration_form_rev_4.xls
+Filename: None
+Status: 200
+
+Title: Standard Generation Interconnection Agreement
+Current URL: https://www.ercot.com/files/docs/2019/09/13/SGIA.doc
+Filename: None
+Status: 200
+
+Title: Surety Bond
+Current URL: https://www.ercot.com/files/docs/2023/09/01/Surety%20Bond%202023.docx
+Filename: None
+Status: 200
+
+Title: TDSP Confidentiality Agreement List
+Current URL: https://www.ercot.com/files/docs/2021/06/02/TDSP-CAs.xlsx
+Filename: None
+Status: 200
+
+Title: TDSP Read Generation Metering Registration Form
+Current URL: https://www.ercot.com/files/docs/2020/08/26/ERCOT_TDSPReadGeneration_Form_v6.1.xlsx
+Filename: None
+Status: 200
+
+Title: Transmission Operator Designation or Termination Form
+Current URL: https://www.ercot.com/files/docs/2021/05/04/Transmission-Operator-Designation-or-Termination-Form.docx
+Filename: None
+Status: 200
+
+Title: TSP Block Load Transfer Registration Form
+Current URL: https://www.ercot.com/files/docs/2012/05/10/tsp_blt_registration_form_rev_5.xls
+Filename: None
+Status: 200
+
+Title: TSP/DSP Sign Up Guide
+Current URL: https://www.ercot.com/files/docs/2022/01/14/TSP-Sign-Up-for-RIOO-Services.pdf
+Filename: None
+Status: 200
+
+Title: Understanding the RIOO Export spreadsheet
+Current URL: https://www.ercot.com/files/docs/2023/05/15/RIOO_IS_Export_data_help_post.xlsx
+Filename: None
+Status: 200
+
+
+Web pages with document links:
+--------------------------------------------------
+
+Checking: https://www.ercot.com/services/rq
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/crr
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/integration
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/imre
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/tdsp
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/qse
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/re/dgresource/
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/re/dgresource
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/re
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/credit
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse/trt/index.html
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse/index
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/re/newqserep-steps
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse/tfi
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse/trt/index
+Page accessible
+
+Checking: https://www.ercot.com/services/rq/lse/tfi/index
+Page accessible
