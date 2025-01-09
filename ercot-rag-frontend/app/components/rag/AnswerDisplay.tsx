@@ -45,21 +45,7 @@ export default function AnswerDisplay({
         ? `Found ${metadata.total_chunks} relevant chunks from ${metadata.unique_sources} sources.`
         : 'No relevant chunks found. The answer was generated using general knowledge from verified sources.';
 
-    // Handle clicks on citations (<cite>)
-    const handleCitationClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        const target = e.target as HTMLElement;
-        if (target.tagName === 'CITE') {
-            const sourceId = target.getAttribute('data-source-id');
-            if (sourceId) {
-                const sourceElement = document.getElementById(sourceId);
-                if (sourceElement) {
-                    sourceElement.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    console.warn(`No source found with ID: ${sourceId}`);
-                }
-            }
-        }
-    };
+
 
     return (
         <div className="w-full max-w-3xl mx-auto">

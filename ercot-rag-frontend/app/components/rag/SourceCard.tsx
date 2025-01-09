@@ -1,6 +1,6 @@
 'use client';
 
-import { ExternalLink, Clock, FileText } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import type { Source } from '../../lib/types';
 
 interface SourceCardProps {
@@ -21,11 +21,6 @@ export default function SourceCard({ source }: SourceCardProps) {
     ? cleanExcerpt(source.highlights[0])
     : null;
 
-    // Only show URL button if it's a valid web URL
-    const isValidUrl = source.metadata.url && (
-        source.metadata.url.startsWith('http://') || 
-        source.metadata.url.startsWith('https://')
-    );
 
     return (
         <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-200">
