@@ -118,29 +118,30 @@ The current RAG system operates in two main phases:
 #### 1. Content Processing Pipeline
 ```mermaid
 graph TD
-    A[Web Scraping] -->|URLs| B[URL Normalization]
-    Z[Document Upload] -->|Files| B
-    B -->|Validated URLs| C[Content Extraction]
-    C -->|Raw Text| D[Content Processing]
-    D -->|Processed Text| E[Text Chunking]
-    E -->|Text Chunks| F[Embedding Generation]
-    F -->|Vectors| G[Vector Storage]
+    A[Web Scraping] -->|HTML Pages| B[URL Discovery]
+    B -->|Document URLs| C[Document Download]
+    B -->|Web URLs| D[Content Extraction]
+    C -->|PDF/DOCX/XLSX| D
+    D -->|Raw Text| E[Content Processing]
+    E -->|Processed Text| F[Text Chunking]
+    F -->|Text Chunks| G[Embedding Generation]
+    G -->|Vectors| H[Vector Storage]
     
-    subgraph "Content Sources"
+    subgraph "Web Scraping"
         A
-        Z
+        B
+        C
     end
     
     subgraph "Processing Pipeline"
-        B
-        C
         D
         E
+        F
     end
     
     subgraph "Vector Database"
-        F
         G
+        H
     end
 ```
 
@@ -175,22 +176,21 @@ graph TD
 This flow influenced the data model design in several ways:
 
 1. **Content Acquisition**
-   - Need to track both scraped and uploaded content
-   - URLs table for scraping progress
-   - Documents table for processed content
+   - Web scraper discovers and tracks URLs
+   - Identifies both web pages and linked documents
+   - Downloads and processes discovered documents
 
 2. **Processing Pipeline**
+   - Different handling for web pages vs documents (PDF/DOCX/XLSX)
    - Chunking strategy based on content type
-   - Processing status tracking
-   - Error recovery support
+   - Processing status tracking for scraping progress
 
 3. **Query Processing**
    - Vector similarity search
    - Source tracking for citations
    - Response formatting for UI
 
-
-## 📝 Data Model Design
+### Data Model Design
 
 ### Understanding the Requirements
 
