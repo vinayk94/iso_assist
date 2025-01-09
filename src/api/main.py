@@ -1,7 +1,12 @@
 # src/api/main.py
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from models import RAGResponse, QueryRequest, QueryMetadata, Citation, Source, SourceMetadata
+from .models import RAGResponse, QueryRequest, QueryMetadata, Citation, Source, SourceMetadata
 
 import logging
 from typing import Optional
