@@ -2,7 +2,7 @@
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://iso-assist.onrender.com/)
 
-ISO-Assist is a Retrieval Augmented Generation (RAG) application that demonstrates how to build an end-to-end solution for document processing, embedding generation, and question answering with source citations. This project serves as both a working application and a learning resource for others and me, while building similar systems.
+ISO-Assist is a Retrieval Augmented Generation (RAG) application that demonstrates how to build an end-to-end solution for document processing, embedding generation, and question answering with source citations. This project serves as both a working application and a learning resource for me, while building similar systems.
 
 ## 🎯 Project Overview
 
