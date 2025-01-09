@@ -111,6 +111,84 @@ project-root/
 ├── documents/                   # Project documentation
 └── README.md                    # Project documentation
 ```
+### System Flow
+
+The current RAG system operates in two main phases:
+
+#### 1. Content Processing Pipeline
+```mermaid
+graph TD
+    A[Web Scraping] -->|URLs| B[URL Normalization]
+    Z[Document Upload] -->|Files| B
+    B -->|Validated URLs| C[Content Extraction]
+    C -->|Raw Text| D[Content Processing]
+    D -->|Processed Text| E[Text Chunking]
+    E -->|Text Chunks| F[Embedding Generation]
+    F -->|Vectors| G[Vector Storage]
+    
+    subgraph "Content Sources"
+        A
+        Z
+    end
+    
+    subgraph "Processing Pipeline"
+        B
+        C
+        D
+        E
+    end
+    
+    subgraph "Vector Database"
+        F
+        G
+    end
+```
+
+#### 2. Query Processing Pipeline
+```mermaid
+graph TD
+    A[User Query] -->|Raw Query| B[Query Processing]
+    B -->|Query Embedding| C[Vector Search]
+    C -->|Similar Chunks| D[Context Assembly]
+    D -->|Formatted Context| E[LLM Response]
+    E -->|Draft Response| F[Source Verification]
+    F -->|Verified Response| G[Citation Formatting]
+    G -->|Final Response| H[UI Display]
+    
+    subgraph "Search"
+        B
+        C
+    end
+    
+    subgraph "Response Generation"
+        D
+        E
+        F
+    end
+    
+    subgraph "Presentation"
+        G
+        H
+    end
+```
+
+This flow influenced the data model design in several ways:
+
+1. **Content Acquisition**
+   - Need to track both scraped and uploaded content
+   - URLs table for scraping progress
+   - Documents table for processed content
+
+2. **Processing Pipeline**
+   - Chunking strategy based on content type
+   - Processing status tracking
+   - Error recovery support
+
+3. **Query Processing**
+   - Vector similarity search
+   - Source tracking for citations
+   - Response formatting for UI
+
 
 ## 📝 Data Model Design
 
