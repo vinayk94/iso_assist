@@ -1,8 +1,8 @@
-# ISO-Assist: An MVP for RAG Applications
+# ISO-Assist:  RAG Application MVP
 
 [![Live Demo](https://img.shields.io/badge/demo-live-success)](https://iso-assist.onrender.com/)
 
-ISO-Assist is a Retrieval Augmented Generation (RAG) application that demonstrates how to build an end-to-end solution for document processing, embedding generation, and question answering with source citations. This project serves as both a working application and a learning resource for others building similar systems.
+ISO-Assist is a Retrieval Augmented Generation (RAG) application that demonstrates how to build an end-to-end solution for document processing, embedding generation, and question answering with source citations. This project serves as both a working application and a learning resource for others and me, while building similar systems.
 
 ## 🎯 Project Overview
 
@@ -26,8 +26,8 @@ All components use free tier services, making it perfect for MVPs and learning:
 - **LLM**: Groq (for inference)
 - **Embeddings**: JINA AI
 - **Vector DB**: Aiven PostgreSQL with pgvector
-- **Document Processing**: Unstructured, pandas
-- **Web Scraping**: BeautifulSoup4, langchain
+- **Document Processing**:  langchain
+- **Web Scraping**: BeautifulSoup
 
 ### Frontend
 - **Framework**: Next.js 14
@@ -112,6 +112,131 @@ project-root/
 └── README.md                    # Project documentation
 ```
 
+## 📝 Data Model Design
+
+### Understanding the Requirements
+
+When building a RAG application, we needed to solve several key challenges:
+
+1. **Content Management**
+   - Store both web content and PDF/DOCX/XLSX documents
+   - Track source URLs for verification
+   - Handle document processing status
+
+2. **Text Processing**
+   - Split documents into searchable chunks
+   - Maintain document structure and context
+   - Enable efficient retrieval
+
+3. **Semantic Search**
+   - Store and query vector embeddings
+   - Support similarity search
+   - Track embedding model versions
+
+### Data Model Evolution
+
+Starting with these requirements, we designed our schema through several iterations:
+
+#### 1. URL and Document Management
+First, we needed to track both web pages and documents:
+
+```
+URLs (for scraping)
+┌─────────┬──────────┬─────────────┐
+│ URL     │ Type     │ Status      │
+├─────────┼──────────┼─────────────┤
+│ /page-1 │ web      │ processed   │
+│ /doc-1  │ document │ pending     │
+└─────────┴──────────┴─────────────┘
+
+Documents (processed content)
+┌────────┬────────┬──────────┬───────────┐
+│ URL    │ Title  │ Type     │ Filename  │
+├────────┼────────┼──────────┼───────────┤
+│ /doc-1 │ Guide  │ PDF      │ guide.pdf │
+└────────┴────────┴──────────┴───────────┘
+```
+
+This separation helps us:
+- Track scraping progress
+- Handle different content types
+- Maintain source traceability
+
+#### 2. Content Chunking
+Next, we needed to break documents into searchable pieces:
+
+```
+Chunks
+┌─────────────┬────────┬───────┬─────────┐
+│ Document ID │ Order  │ Text  │ Length  │
+├─────────────┼────────┼───────┼─────────┤
+│ 1          │ 1      │ ...   │ 450     │
+│ 1          │ 2      │ ...   │ 380     │
+└─────────────┴────────┴───────┴─────────┘
+```
+
+Why this structure?
+- Documents need to be split for relevance
+- Order matters for context
+- Size impacts answer quality
+
+#### 3. Vector Search
+Finally, for semantic search, we needed vector embeddings:
+
+```
+Embeddings
+┌──────────┬───────────┬─────────┬──────────┐
+│ Chunk ID │ Vector    │ Model   │ Tokens   │
+├──────────┼───────────┼─────────┼──────────┤
+│ 1        │ [0.1,...] │ jina-v3 │ 128     │
+└──────────┴───────────┴─────────┴──────────┘
+```
+
+This required:
+- PostgreSQL with pgvector extension
+- HNSW index for similarity search
+- Token tracking for costs
+
+### Indexing Strategy
+
+Our choice of indexes was driven by query patterns:
+
+1. **URL Lookups**
+   ```sql
+   CREATE INDEX idx_documents_url ON documents(url);
+   ```
+   Why? Quick source verification during responses
+
+2. **Document Reconstruction**
+   ```sql
+   CREATE INDEX idx_chunks_document ON chunks(document_id);
+   ```
+   Why? Efficiently rebuild original documents
+
+3. **Vector Search**
+   ```sql
+   CREATE INDEX embedding_vector_idx ON chunk_embeddings 
+       USING hnsw (embedding vector_cosine_ops);
+   ```
+   Why? Fast similarity search for semantic queries
+
+### Performance Considerations
+
+1. **Vector Storage with pgvector**
+   - Enabled via: `CREATE EXTENSION vector;`
+   - Dimension: 1024 (JINA embeddings)
+   - Index: HNSW (better for incremental updates)
+
+2. **Query Optimization**
+   - Metadata joins after vector search
+   - Chunk deduplication
+   - Caching opportunities
+
+3. **Monitoring**
+   - Processing status tracking
+   - Token usage monitoring
+   - Error recovery support
+
 ## 📊 Current Status
 
 - **Web Content**: 17 pages processed
@@ -165,12 +290,12 @@ Full requirements available in `requirements.txt`.
 - **Aiven PostgreSQL**: Storage and connection limits
 - **Render**: Deployment resource constraints
 
-## 🎓 Lessons for Others
+## 🎓 Lessons for me
 
 1. **Start Simple**
    - Begin with basic document processing
    - Add features incrementally
-   - Test thoroughly at each stage
+   - Test thoroughly at each stage (Most important !)
 
 2. **Handle Edge Cases**
    - Plan for document format variations
@@ -179,8 +304,7 @@ Full requirements available in `requirements.txt`.
 
 3. **Optimize Early**
    - Implement proper chunking strategies
-   - Use efficient vector search
-   - Cache when possible
+
 
 ## 🙏 Acknowledgments
 
