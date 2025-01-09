@@ -52,6 +52,11 @@ async def startup_event():
         logger.error(f"Failed to initialize RAG Assistant: {e}")
         raise
 
+@app.get("/")
+async def root():
+    """Root endpoint to confirm the API is running."""
+    return {"message": "Welcome to the RAG API!"}
+
 
 
 @app.get("/api/health")
@@ -118,4 +123,5 @@ async def process_query(request: QueryRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    import os
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
