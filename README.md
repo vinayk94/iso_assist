@@ -135,10 +135,10 @@ When building a RAG application, we needed to solve several key challenges:
 
 ### Data Model Evolution
 
-Starting with these requirements, we designed our schema through several iterations:
+Starting with these requirements, I designed my schema through several iterations:
 
 #### 1. URL and Document Management
-First, we needed to track both web pages and documents:
+First, I needed to track both web pages and documents:
 
 ```
 URLs (for scraping)
@@ -157,13 +157,13 @@ Documents (processed content)
 └────────┴────────┴──────────┴───────────┘
 ```
 
-This separation helps us:
+This separation helps to:
 - Track scraping progress
 - Handle different content types
 - Maintain source traceability
 
 #### 2. Content Chunking
-Next, we needed to break documents into searchable pieces:
+Next, I needed to break documents into searchable pieces:
 
 ```
 Chunks
@@ -181,7 +181,7 @@ Why this structure?
 - Size impacts answer quality
 
 #### 3. Vector Search
-Finally, for semantic search, we needed vector embeddings:
+Finally, for semantic search, I needed vector embeddings:
 
 ```
 Embeddings
@@ -199,7 +199,7 @@ This required:
 
 ### Indexing Strategy
 
-Our choice of indexes was driven by query patterns:
+My choice of indexes was driven by query patterns:
 
 1. **URL Lookups**
    ```sql
