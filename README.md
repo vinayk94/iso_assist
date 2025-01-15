@@ -326,7 +326,7 @@ My choice of indexes was driven by query patterns:
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/iso-assist.git
+git clone https://github.com/vinayk94/iso_assist.git
 cd iso-assist
 ```
 
